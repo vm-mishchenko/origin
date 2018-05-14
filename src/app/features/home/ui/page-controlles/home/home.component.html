@@ -1,0 +1,21 @@
+<div class="o-sidebar w-secondary-zone">
+    <br>
+
+    <o-user-info></o-user-info>
+
+    <br>
+
+    <o-page-tree (selectedPage)="onSelectedPage($event)"></o-page-tree>
+
+    <br>
+
+    <button type="button" (click)="onAddPage()" class="btn btn-link btn-sm w-btn o-add-page">
+        <span class="w-icon oi oi-plus"></span>
+        <span>Add page</span>
+    </button>
+</div>
+
+
+<div class="o-container">
+    <router-outlet></router-outlet>
+</div>

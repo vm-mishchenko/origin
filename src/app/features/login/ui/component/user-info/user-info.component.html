@@ -1,0 +1,8 @@
+<o-busy-status class="mr-2" [isBusy]="storageService.saving$ | async"></o-busy-status>
+
+<div ngbDropdown class="w-dropdown">
+    <button class="btn btn-link w-btn" ngbDropdownToggle>{{(loginDataStreams.user$ | async)?.displayName}}</button>
+    <div ngbDropdownMenu>
+        <button (click)="onLogout()" class="dropdown-item">Logout</button>
+    </div>
+</div>

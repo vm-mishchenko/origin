@@ -1,0 +1,17 @@
+<div #container class="page-controller">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 page__header">
+                <div>
+                    <button (click)="showMenu()" class="mobile-header btn btn-link w-btn">
+                        <span class="w-icon oi oi-menu" title="Menu" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <o-page-breadcrumb></o-page-breadcrumb>
+            </div>
+        </div>
+    </div>
+
+    <o-page-editor [scrollableContainer]="container" [page]="pageUiController.selectedPage$ | async"></o-page-editor>
+</div>

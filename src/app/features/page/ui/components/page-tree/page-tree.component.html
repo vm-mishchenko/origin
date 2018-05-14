@@ -1,0 +1,4 @@
+<ul class="w-selection-list">
+    <o-page-tree-item *ngFor="let pageTreeItem of pageTree$ | async;trackBy: trackById"
+                      [pageTreeItem]="pageTreeItem"></o-page-tree-item>
+</ul>

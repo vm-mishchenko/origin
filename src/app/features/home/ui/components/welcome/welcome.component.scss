@@ -1,0 +1,15 @@
+@import "./src/assets/scss/variables";
+
+.page__header {
+  display: flex;
+  align-content: center;
+  margin: 1rem 0;
+}
+
+.mobile-header {
+  display: none;
+
+  @media screen and (max-width: $o-medium-screen) {
+    display: block;
+  }
+}

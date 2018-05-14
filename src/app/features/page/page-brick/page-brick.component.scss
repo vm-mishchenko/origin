@@ -1,0 +1,15 @@
+@import "node_modules/ngx-wall/dist/scss/variables";
+
+button {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.2rem;
+  padding: 0.25rem 0;
+  color: darken($w-active-color, 25%);
+
+  span {
+    outline: none;
+    margin-left: 5px;
+  }
+}
