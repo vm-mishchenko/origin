@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { FirebaseStorage } from '../firebase-storage/firebase-storage.class';
-import { LocalStorage } from '../local-storage/local-storage.class';
-import { IStorage } from './storage.interface';
+import {Injectable} from '@angular/core';
+import {Observable, Subject} from 'rxjs';
+import {FirebaseStorage} from '../firebase-storage/firebase-storage.class';
+import {LocalStorage} from '../local-storage/local-storage.class';
+import {IStorage} from './storage.interface';
 
 @Injectable()
 export class StorageService implements IStorage {

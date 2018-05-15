@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
-import { IStorage } from '../storage/storage.interface';
+import {Injectable} from '@angular/core';
+import {AngularFireDatabase} from 'angularfire2/database';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {IStorage} from '../storage/storage.interface';
 
 @Injectable()
 export class FirebaseStorage implements IStorage {
@@ -15,10 +16,13 @@ export class FirebaseStorage implements IStorage {
     }
 
     getItem(key): Observable<any> {
-        return this.db.object(key).snapshotChanges()
-            .map((data) => {
-                return data.payload.val();
-            });
+        return this.db.object(key)
+            .snapshotChanges()
+            .pipe(
+                map((data: any) => {
+                    return data.payload.val();
+                })
+            );
     }
 
     getList(listName: string, fnBuilder: any): Observable<any[]> {

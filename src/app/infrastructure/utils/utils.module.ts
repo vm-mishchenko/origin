@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Guid } from './guid.class';
+import {NgModule} from '@angular/core';
+import {Guid} from './guid.class';
 
 @NgModule({
     providers: [

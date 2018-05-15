@@ -1,6 +1,6 @@
 import {Observable, Subject} from 'rxjs';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
+import {ConnectableObservable} from 'rxjs/internal/observable/ConnectableObservable';
+import {filter, map, publishReplay} from 'rxjs/operators';
 import {Model} from './model';
 
 export class Collection<T extends Model<any>> {
@@ -14,10 +14,11 @@ export class Collection<T extends Model<any>> {
     private models: T[] = [];
 
     constructor() {
-        const states$ = this.events$
-            .filter((action) => action.actionName === 'all')
-            .map(() => this.models.map((model) => model.toJSON()))
-            .publishReplay(1);
+        const states$ = this.events$.pipe(
+            filter((action) => action.actionName === 'all'),
+            map(() => this.models.map((model) => model.toJSON())),
+            publishReplay(1)
+        ) as ConnectableObservable<any>;
 
         states$.connect();
 

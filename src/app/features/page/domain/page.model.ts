@@ -1,6 +1,6 @@
-import { IBrickSnapshot, IWallDefinition, IWallModel, WallBrick, WallModelFactory } from 'ngx-wall';
-import { Model } from '../../../core/model/model';
-import { IPageDataModel } from './page-data-model';
+import {IBrickSnapshot, IWallDefinition, IWallModel, WallBrick, WallModelFactory} from 'ngx-wall';
+import {Model} from '../../../core/model/model';
+import {IPageDataModel} from './page-data-model';
 
 export class Page extends Model<IPageDataModel> {
     private wallModelFactory: WallModelFactory;

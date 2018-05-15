@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard, LoginPageGuard } from '../application/navigation';
-import { HomeComponent, HomeModule, WelcomeComponent } from '../features/home';
-import { LoginModule, LoginPageControllerComponent } from '../features/login';
-import { PageControllerComponent, PageModule } from '../features/page';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AuthGuard, LoginPageGuard} from '../application/navigation';
+import {HomeComponent, HomeModule, WelcomeComponent} from '../features/home';
+import {LoginModule, LoginPageControllerComponent} from '../features/login';
+import {PageControllerComponent, PageModule} from '../features/page';
 
 const routes: Routes = [
     {
         path: 'login',
+        //loadChildren: '../features/login/login.module#LoginModule',
         component: LoginPageControllerComponent,
         canActivate: [
             LoginPageGuard
@@ -40,7 +41,10 @@ const routes: Routes = [
         LoginModule,
         HomeModule,
         PageModule,
-        RouterModule.forRoot(routes, {useHash: true})
+        RouterModule.forRoot(routes)
+    ],
+    exports: [
+        RouterModule
     ]
 })
 export class RoutingModule {

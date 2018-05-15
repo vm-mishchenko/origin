@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { AngularFireStorage } from 'angularfire2/storage';
-import { IFileUploader, IFileUploadTask } from 'ngx-wall';
-import 'rxjs/add/operator/do';
-import { Observable } from 'rxjs/Observable';
-import { forkJoin } from 'rxjs/observable/forkJoin';
-import { IUserData, LoginDataStreams } from '../../features/login';
-import { ILogger, LoggerFactoryService } from '../logger';
-import { FIREBASE_LOCAL_STORAGE_KEY } from './firebase-file-uploader.constant';
+import {Injectable} from '@angular/core';
+import {UploadTaskSnapshot} from '@firebase/storage-types';
+import {AngularFireStorage} from 'angularfire2/storage';
+import {IFileUploader, IFileUploadTask} from 'ngx-wall';
+import {forkJoin, Observable} from 'rxjs';
+import {mergeMap, tap} from 'rxjs/operators';
+import {IUserData, LoginDataStreams} from '../../features/login';
+import {ILogger, LoggerFactoryService} from '../logger';
+import {FIREBASE_LOCAL_STORAGE_KEY} from './firebase-file-uploader.constant';
 
 @Injectable()
 export class FirebaseFileUploaderService implements IFileUploader {
@@ -38,7 +38,23 @@ export class FirebaseFileUploaderService implements IFileUploader {
     }
 
     upload(filePath: string, file: File): IFileUploadTask {
-        return this.storage.upload(filePath, file);
+        const uploadTask = this.storage.upload(filePath, file);
+
+        return {
+            snapshotChanges: () => {
+                return uploadTask.snapshotChanges().pipe(
+                    mergeMap((uploadTaskSnapshot: UploadTaskSnapshot) => {
+                        return uploadTaskSnapshot.ref.getDownloadURL().then((downloadURL: string) => {
+                            return {
+                                ...uploadTaskSnapshot,
+                                downloadURL
+                            };
+                        });
+                    })
+                );
+            },
+            percentageChanges: uploadTask.percentageChanges
+        };
     }
 
     /**
@@ -65,9 +81,11 @@ export class FirebaseFileUploaderService implements IFileUploader {
     private removeFile(filePath: string): Observable<void> {
         return this.storage.ref(filePath)
             .delete()
-            .do(() => {
-                this.removeFilePath(filePath);
-            });
+            .pipe(
+                tap(() => {
+                    this.removeFilePath(filePath);
+                })
+            );
     }
 
     private persistFilePathToRemove(filePath: string): void {

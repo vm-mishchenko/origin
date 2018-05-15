@@ -1,4 +1,4 @@
-import { IEvent } from '../../../application/event-bus';
+import {IEvent} from '../../../application/event-bus';
 
 export class PageSelectedEvent implements IEvent {
     type = 'PAGE:PAGE_SELECTED';

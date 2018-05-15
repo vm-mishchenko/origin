@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {WallModelFactory} from 'ngx-wall';
 import {Observable} from 'rxjs';
-import 'rxjs/add/operator/mergeMap';
+import {first, map} from 'rxjs/operators';
 import {Guid} from '../../../infrastructure/utils';
 import {IUserData, LoginDataStreams} from '../../login';
 import {PageGateway} from '../infrastructure/page.gateway';
@@ -24,8 +24,9 @@ export class PageRepository {
     }
 
     getRootPageIds(): Observable<string[]> {
-        return this.pageGateway.getRootPageIds(this.user.uid)
-            .first();
+        return this.pageGateway.getRootPageIds(this.user.uid).pipe(
+            first()
+        );
     }
 
     // cache request
@@ -33,10 +34,11 @@ export class PageRepository {
         let pageRequestPromise = this.pageCache.get(pageId);
 
         if (!pageRequestPromise) {
-            pageRequestPromise = this.pageGateway.get(pageId, this.user.uid)
-                .map((page) => {
+            pageRequestPromise = this.pageGateway.get(pageId, this.user.uid).pipe(
+                map((page) => {
                     return page ? this.restorePage(page) : null;
                 })
+            )
                 .toPromise()
                 .then((page) => {
                     this.pageCache.delete(pageId);

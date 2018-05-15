@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { EventBusService } from './event-bus.service';
+import {NgModule} from '@angular/core';
+import {EventBusService} from './event-bus.service';
 
 @NgModule({
     providers: [

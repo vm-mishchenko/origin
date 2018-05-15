@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { LoggerFactoryService } from './logger-factory.service';
+import {NgModule} from '@angular/core';
+import {LoggerFactoryService} from './logger-factory.service';
 
 @NgModule({
     providers: [

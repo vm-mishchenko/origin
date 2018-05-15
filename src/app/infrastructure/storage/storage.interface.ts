@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
 export interface IStorage {
     setItem(key: string, value: any): Promise<any>;

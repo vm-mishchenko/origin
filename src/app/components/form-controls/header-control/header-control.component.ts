@@ -1,6 +1,6 @@
-import { Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ValueAccessor } from '../value-accessor';
+import {Component, ElementRef, EventEmitter, HostListener, Output, ViewChild} from '@angular/core';
+import {NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ValueAccessor} from '../value-accessor';
 
 @Component({
     selector: 'o-header-control',

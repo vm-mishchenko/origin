@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { EventBusService } from '../../../../../application/event-bus';
-import { SwitchMenuEvent } from '../../../../../application/origin';
+import {Component, OnInit} from '@angular/core';
+import {EventBusService} from '../../../../../application/event-bus';
+import {SwitchMenuEvent} from '../../../../../application/origin';
 
 @Component({
     selector: 'o-welcome',

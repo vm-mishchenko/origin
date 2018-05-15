@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {
     IPickOutAreaConfig,
     IWallConfiguration,
@@ -11,15 +11,14 @@ import {
     WallApi,
     WallModelFactory
 } from 'ngx-wall';
-import 'rxjs/add/operator/debounceTime';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
-import { EventBusService } from '../../../../../application/event-bus';
-import { IPageDataModel } from '../../../domain/page-data-model';
-import { AddPageEvent } from '../../../events/add-page.event';
-import { PageBrickDeletedEvent } from '../../../events/page-brick-deleted.event';
-import { SelectedBricksEvent } from '../../../events/selected-bricks.event';
-import { UpdatePageContentEvent } from '../../../events/update-page-content.event';
+import {Subject, Subscription} from 'rxjs';
+import {debounceTime} from 'rxjs/operators';
+import {EventBusService} from '../../../../../application/event-bus';
+import {IPageDataModel} from '../../../domain/page-data-model';
+import {AddPageEvent} from '../../../events/add-page.event';
+import {PageBrickDeletedEvent} from '../../../events/page-brick-deleted.event';
+import {SelectedBricksEvent} from '../../../events/selected-bricks.event';
+import {UpdatePageContentEvent} from '../../../events/update-page-content.event';
 
 @Component({
     selector: 'o-page-editor',
@@ -33,17 +32,17 @@ export class PageEditorComponent implements OnChanges, OnDestroy, OnInit {
         scrollableContainer: null
     };
 
-    private pageForm: FormGroup;
-    private pageFormSubscription: Subscription;
+    pageForm: FormGroup;
+    wallModel: IWallModel;
+    wallConfiguration: IWallConfiguration;
 
-    private wallModel: IWallModel;
+    private pageFormSubscription: Subscription;
     private wallModelSubscription: any;
 
     private pageChanges$ = new Subject();
     private pageChangesSubscription: Subscription;
 
     private wallApi: WallApi;
-    private wallConfiguration: IWallConfiguration;
 
     constructor(private wallModelFactory: WallModelFactory,
                 private eventBusService: EventBusService,
@@ -100,11 +99,11 @@ export class PageEditorComponent implements OnChanges, OnDestroy, OnInit {
     ngOnInit() {
         this.pickOutAreaConfig.scrollableContainer = this.scrollableContainer;
 
-        this.pageChangesSubscription = this.pageChanges$
-            .debounceTime(500)
-            .subscribe((newPageData) => {
-                this.dispatch(new UpdatePageContentEvent(this.page.id, newPageData));
-            });
+        this.pageChangesSubscription = this.pageChanges$.pipe(
+            debounceTime(500)
+        ).subscribe((newPageData) => {
+            this.dispatch(new UpdatePageContentEvent(this.page.id, newPageData));
+        });
     }
 
     ngOnChanges(changes: SimpleChanges) {

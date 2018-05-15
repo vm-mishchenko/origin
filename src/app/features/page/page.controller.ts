@@ -1,23 +1,23 @@
-import { Injectable } from '@angular/core';
-import { IWallDefinition } from 'ngx-wall';
-import { EventBusService } from '../../application/event-bus';
-import { NavigateToPageEvent } from '../../application/navigation';
-import { NavigateToDefaultPageEvent } from '../../application/navigation/events/navigate-to-default-page.event';
-import { Collection } from '../../core/model/collection';
-import { FirebaseFileUploaderService } from '../../infrastructure/firebase-file-uploader';
-import { ILogger, LoggerFactoryService } from '../../infrastructure/logger';
-import { IUserData, LoginDataStreams } from '../login';
-import { Page } from './domain/page.model';
-import { PageRepository } from './domain/page.repository';
-import { AddPageEvent } from './events/add-page.event';
-import { DeletePageEvent } from './events/delete-page.event';
-import { LoadPageEvent } from './events/load-page.event';
-import { MoveBricksToPageEvent } from './events/move-bricks-to-page.event';
-import { MovePageEvent } from './events/move-page.event';
-import { PageBrickDeletedEvent } from './events/page-brick-deleted.event';
-import { PageInUrlSelectedEvent } from './events/page-in-url-selected.event';
-import { PageSelectedEvent } from './events/page-selected.event';
-import { UpdatePageContentEvent } from './events/update-page-content.event';
+import {Injectable} from '@angular/core';
+import {IWallDefinition} from 'ngx-wall';
+import {EventBusService} from '../../application/event-bus';
+import {NavigateToPageEvent} from '../../application/navigation';
+import {NavigateToDefaultPageEvent} from '../../application/navigation/events/navigate-to-default-page.event';
+import {Collection} from '../../core/model/collection';
+import {FirebaseFileUploaderService} from '../../infrastructure/firebase-file-uploader';
+import {ILogger, LoggerFactoryService} from '../../infrastructure/logger';
+import {IUserData, LoginDataStreams} from '../login';
+import {Page} from './domain/page.model';
+import {PageRepository} from './domain/page.repository';
+import {AddPageEvent} from './events/add-page.event';
+import {DeletePageEvent} from './events/delete-page.event';
+import {LoadPageEvent} from './events/load-page.event';
+import {MoveBricksToPageEvent} from './events/move-bricks-to-page.event';
+import {MovePageEvent} from './events/move-page.event';
+import {PageBrickDeletedEvent} from './events/page-brick-deleted.event';
+import {PageInUrlSelectedEvent} from './events/page-in-url-selected.event';
+import {PageSelectedEvent} from './events/page-selected.event';
+import {UpdatePageContentEvent} from './events/update-page-content.event';
 
 @Injectable()
 export class PageController {

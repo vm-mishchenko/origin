@@ -2,7 +2,7 @@ import {async, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuth} from 'angularfire2/auth';
-import {Observable} from 'rxjs';
+import {of} from 'rxjs/internal/observable/of';
 import {FIREBASE_CONFIG} from '../../app.config';
 import {PageRepository} from './domain/page.repository';
 import {PageController} from './page.controller';
@@ -20,7 +20,7 @@ describe('PageController', () => {
                 {
                     provide: AngularFireAuth,
                     useValue: {
-                        authState: Observable.of(null)
+                        authState: of(null)
                     }
                 }
             ]

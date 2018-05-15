@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { FirebaseStorage } from './firebase-storage.class';
+import {NgModule} from '@angular/core';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {FirebaseStorage} from './firebase-storage.class';
 
 @NgModule({
     imports: [

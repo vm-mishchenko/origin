@@ -1,11 +1,12 @@
-import { ILogger } from './interfaces/logger.interface';
+import {environment} from '../../../environments/environment';
+import {ILogger} from './interfaces/logger.interface';
 
 export class LoggerService implements ILogger {
     constructor(private moduleName: string) {
     }
 
     debug(message) {
-        if (!process.env.isProduction) {
+        if (!environment.production) {
             /* tslint:disable:no-console */
             console.log(`Debug: ${this.moduleName} : ${message}`);
         }

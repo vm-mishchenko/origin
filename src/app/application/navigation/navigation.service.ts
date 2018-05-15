@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { LoginDataStreams } from '../../features/login';
-import { ILogger, LoggerFactoryService } from '../../infrastructure/logger';
-import { EventBusService } from '../event-bus/event-bus.service';
-import { NavigateToDefaultPageEvent } from './events/navigate-to-default-page.event';
-import { NavigateToPageEvent } from './events/navigate-to-page.event';
-import { NAVIGATION } from './navigation.constant';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {filter} from 'rxjs/operators';
+import {LoginDataStreams} from '../../features/login';
+import {ILogger, LoggerFactoryService} from '../../infrastructure/logger';
+import {EventBusService} from '../event-bus/event-bus.service';
+import {NavigateToDefaultPageEvent} from './events/navigate-to-default-page.event';
+import {NavigateToPageEvent} from './events/navigate-to-page.event';
+import {NAVIGATION} from './navigation.constant';
 
 @Injectable()
 export class NavigationService {
@@ -17,17 +18,17 @@ export class NavigationService {
                 private loggerFactoryService: LoggerFactoryService) {
         this.logger = this.loggerFactoryService.create('Navigation');
 
-        this.loginDataStreams.user$
-            .filter((user) => user === null)
-            .subscribe(() => {
-                this.toLoginPage();
-            });
+        this.loginDataStreams.user$.pipe(
+            filter((user) => user === null)
+        ).subscribe(() => {
+            this.toLoginPage();
+        });
 
-        this.loginDataStreams.user$
-            .filter((user) => user && this.router.url === NAVIGATION.urls.login)
-            .subscribe(() => {
-                this.toDefaultPage();
-            });
+        this.loginDataStreams.user$.pipe(
+            filter((user) => user && this.router.url === NAVIGATION.urls.login)
+        ).subscribe(() => {
+            this.toDefaultPage();
+        });
 
         this.eventBusService.actions$.subscribe((action) => {
             if (action instanceof NavigateToPageEvent) {

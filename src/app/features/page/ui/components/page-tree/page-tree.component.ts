@@ -1,17 +1,15 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Radar, TowService } from 'ngx-wall';
-import 'rxjs/add/operator/combineLatest';
-import 'rxjs/add/operator/debounceTime';
-import { Observable } from 'rxjs/Observable';
-import { combineLatest } from 'rxjs/observable/combineLatest';
-import { EventBusService } from '../../../../../application/event-bus/event-bus.service';
-import { Inquire } from '../../../../../components/inquire';
-import { PageRepository } from '../../../domain/page.repository';
-import { DeletePageEvent } from '../../../events/delete-page.event';
-import { LoadPageEvent } from '../../../events/load-page.event';
-import { PageSelectedEvent } from '../../../events/page-selected.event';
-import { IPageTreeDataItem, PageUiController } from '../../../page-ui.controller';
-import { IPageTreeItem } from './page-tree.interfaces';
+import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Radar, TowService} from 'ngx-wall';
+import {combineLatest, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {EventBusService} from '../../../../../application/event-bus';
+import {Inquire} from '../../../../../components/inquire';
+import {PageRepository} from '../../../domain/page.repository';
+import {DeletePageEvent} from '../../../events/delete-page.event';
+import {LoadPageEvent} from '../../../events/load-page.event';
+import {PageSelectedEvent} from '../../../events/page-selected.event';
+import {IPageTreeDataItem, PageUiController} from '../../../page-ui.controller';
+import {IPageTreeItem} from './page-tree.interfaces';
 
 @Component({
     selector: 'o-page-tree',
@@ -38,18 +36,20 @@ export class PageTreeComponent implements OnInit {
         this.pageTree$ = combineLatest(
             this.pageUiController.pageTreeComponent$,
             this.pageUiController.selectedPageId$
-        ).map(([pageTreeComponents, selectedPageId]) => {
-            const previousFlatPageItemList = this.previousFlatPageItemList.slice(0);
+        ).pipe(
+            map(([pageTreeComponents, selectedPageId]) => {
+                const previousFlatPageItemList = this.previousFlatPageItemList.slice(0);
 
-            this.previousFlatPageItemList = [];
+                this.previousFlatPageItemList = [];
 
-            return this.buildPageTreeChild(
-                null,
-                pageTreeComponents,
-                2,
-                selectedPageId,
-                previousFlatPageItemList);
-        });
+                return this.buildPageTreeChild(
+                    null,
+                    pageTreeComponents,
+                    2,
+                    selectedPageId,
+                    previousFlatPageItemList);
+            })
+        );
     }
 
     buildPageTreeChild(parentPageTreeItem: IPageTreeItem,

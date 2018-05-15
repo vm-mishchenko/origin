@@ -1,4 +1,4 @@
-import { ControlValueAccessor } from '@angular/forms';
+import {ControlValueAccessor} from '@angular/forms';
 
 export class ValueAccessor<T> implements ControlValueAccessor {
     private innerValue: T;

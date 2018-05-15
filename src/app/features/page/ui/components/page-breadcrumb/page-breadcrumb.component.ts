@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { combineLatest } from 'rxjs/observable/combineLatest';
-import { EventBusService } from '../../../../../application/event-bus';
-import { PageSelectedEvent } from '../../../events/page-selected.event';
-import { IPageTreeDataItem, PageUiController } from '../../../page-ui.controller';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {combineLatest, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {EventBusService} from '../../../../../application/event-bus';
+import {PageSelectedEvent} from '../../../events/page-selected.event';
+import {IPageTreeDataItem, PageUiController} from '../../../page-ui.controller';
 
 @Component({
     selector: 'o-page-breadcrumb',
@@ -22,29 +22,31 @@ export class PageBreadcrumbComponent implements OnInit {
         this.breadcrumbs$ = combineLatest(
             this.pageUiController.pageTreeComponent$,
             this.pageUiController.selectedPageId$
-        ).map(([pageTreeComponents, selectedPageId]) => {
-            const pages = [];
+        ).pipe(
+            map(([pageTreeComponents, selectedPageId]) => {
+                const pages = [];
 
-            let currentPageTree = pageTreeComponents
-                .find((pageTreeComponent) => pageTreeComponent.id === selectedPageId);
+                let currentPageTree = pageTreeComponents
+                    .find((pageTreeComponent) => pageTreeComponent.id === selectedPageId);
 
-            if (currentPageTree) {
-                pages.push(currentPageTree);
+                if (currentPageTree) {
+                    pages.push(currentPageTree);
 
-                while (currentPageTree && currentPageTree.parentId) {
-                    const parentPageTree = pageTreeComponents
-                        .find((pageTreeComponent) => pageTreeComponent.id === currentPageTree.parentId);
+                    while (currentPageTree && currentPageTree.parentId) {
+                        const parentPageTree = pageTreeComponents
+                            .find((pageTreeComponent) => pageTreeComponent.id === currentPageTree.parentId);
 
-                    if (parentPageTree) {
-                        pages.push(parentPageTree);
+                        if (parentPageTree) {
+                            pages.push(parentPageTree);
+                        }
+
+                        currentPageTree = parentPageTree;
                     }
 
-                    currentPageTree = parentPageTree;
+                    return pages.reverse();
                 }
-
-                return pages.reverse();
-            }
-        });
+            })
+        );
     }
 
     onPageSelected(pageTreeDataItem: IPageTreeDataItem) {

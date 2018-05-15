@@ -1,4 +1,4 @@
-import { IEvent } from '../../../application/event-bus';
+import {IEvent} from '../../../application/event-bus';
 
 export class MovePageEvent implements IEvent {
     type = 'PAGE:MOVE_PAGE';

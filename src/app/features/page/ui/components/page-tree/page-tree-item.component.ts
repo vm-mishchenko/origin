@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { PageTreeComponent } from './page-tree.component';
-import { IPageTreeItem } from './page-tree.interfaces';
+import {Component, Input} from '@angular/core';
+import {PageTreeComponent} from './page-tree.component';
+import {IPageTreeItem} from './page-tree.interfaces';
 
 @Component({
     selector: 'o-page-tree-item',

@@ -1,4 +1,4 @@
-import { IWallDefinition } from 'ngx-wall';
+import {IWallDefinition} from 'ngx-wall';
 
 export interface IPageDataModel {
     id: string;

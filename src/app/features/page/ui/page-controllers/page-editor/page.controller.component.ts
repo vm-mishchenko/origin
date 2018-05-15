@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { EventBusService } from '../../../../../application/event-bus';
-import { SwitchMenuEvent } from '../../../../../application/origin/events/switch-menu.event';
-import { PageInUrlSelectedEvent } from '../../../events/page-in-url-selected.event';
-import { PageUiController } from '../../../page-ui.controller';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {EventBusService} from '../../../../../application/event-bus';
+import {SwitchMenuEvent} from '../../../../../application/origin/events/switch-menu.event';
+import {PageInUrlSelectedEvent} from '../../../events/page-in-url-selected.event';
+import {PageUiController} from '../../../page-ui.controller';
 
 @Component({
     templateUrl: './page.controller.component.html',

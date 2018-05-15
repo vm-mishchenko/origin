@@ -3,9 +3,36 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "module": "es2015",
-    "types": []
+    "types": [],
+    "paths": {
+      "@angular/*": [
+        "./node_modules/@angular/*"
+      ],
+      "@ng-bootstrap/*": [
+        "./node_modules/@ng-bootstrap/*"
+      ],
+      "rxjs": [
+        "./node_modules/rxjs"
+      ],
+      "rxjs/*": [
+        "./node_modules/rxjs/*"
+      ],
+      "codemirror": [
+        "./node_modules/codemirror"
+      ],
+      "codemirror/*": [
+        "./node_modules/codemirror/*"
+      ],
+      "bootstrap": [
+        "./node_modules/bootstrap"
+      ],
+      "open-iconic": [
+        "./node_modules/open-iconic"
+      ]
+    }
   },
   "exclude": [
+    "node_modules",
     "src/test.ts",
     "**/*.spec.ts"
   ]

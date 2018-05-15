@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import 'rxjs/add/observable/defer';
-import 'rxjs/add/operator/first';
-import { Observable } from 'rxjs/Observable';
-import { StorageService } from '../../../infrastructure/storage/storage.service';
-import { IPageDataModel } from '../domain/page-data-model';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {first, map} from 'rxjs/operators';
+import {StorageService} from '../../../infrastructure/storage/storage.service';
+import {IPageDataModel} from '../domain/page-data-model';
 
 /*
  *
@@ -29,16 +28,17 @@ export class PageGateway {
     getRootPageIds(uid: string): Observable<string[]> {
         const dbKey = `${this.pagesTokenName}/${uid}`;
 
-        return this.storageService.getList(dbKey, (ref) => ref.orderByChild('parentId').equalTo(null))
-            .map((pages) => pages.map((pageData: any) => pageData.id));
+        return this.storageService.getList(dbKey, (ref) => ref.orderByChild('parentId').equalTo(null)).pipe(
+            map((pages: any[]) => pages.map((pageData: any) => pageData.id))
+        );
     }
 
     get(id: string, uid: string): Observable<IPageDataModel> {
         const dbKey = `${this.pagesTokenName}/${uid}/${id}`;
 
-        return this.storageService.getItem(dbKey)
-            .first()
-            .map((pageData: any) => {
+        return this.storageService.getItem(dbKey).pipe(
+            first(),
+            map((pageData: any) => {
                 if (pageData) {
                     // page exists
                     if (pageData.body) {
@@ -47,7 +47,8 @@ export class PageGateway {
 
                     return pageData;
                 }
-            });
+            })
+        );
     }
 
     save(pageData: IPageDataModel, uid: string): Promise<void> {

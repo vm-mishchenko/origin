@@ -4,6 +4,15 @@ export class Model<State> {
     events$: Observable<any> = new Subject();
 
     state$: Observable<State> = new Subject();
+    private innerState: State;
+
+    constructor(state: any) {
+        this.state = state;
+    }
+
+    get state(): State {
+        return this.innerState;
+    }
 
     set state(data: State) {
         this.innerState = data;
@@ -11,16 +20,6 @@ export class Model<State> {
         this.triggerEvent('change');
 
         (this.state$ as Subject<State>).next(this.innerState);
-    }
-
-    get state(): State {
-        return this.innerState;
-    }
-
-    private innerState: State;
-
-    constructor(state: any) {
-        this.state = state;
     }
 
     toJSON() {

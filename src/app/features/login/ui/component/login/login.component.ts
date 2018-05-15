@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { EventBusService } from '../../../../../application/event-bus';
-import { LoginAction } from '../../../actions/login.action';
+import {Component} from '@angular/core';
+import {EventBusService} from '../../../../../application/event-bus';
+import {LoginAction} from '../../../actions/login.action';
 
 @Component({
     selector: 'o-login',

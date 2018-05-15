@@ -1,7 +1,11 @@
-import { Injectable } from '@angular/core';
-import { cloneDeep, get, set } from 'lodash';
-import { Observable } from 'rxjs/Observable';
-import { IStorage } from '../storage/storage.interface';
+import {Injectable} from '@angular/core';
+import cloneDeep from 'lodash/cloneDeep';
+import get from 'lodash/get';
+import set from 'lodash/set';
+import {Observable} from 'rxjs';
+import {of} from 'rxjs/internal/observable/of';
+import {map} from 'rxjs/operators';
+import {IStorage} from '../storage/storage.interface';
 
 @Injectable()
 export class LocalStorage implements IStorage {
@@ -21,17 +25,21 @@ export class LocalStorage implements IStorage {
     }
 
     getItem(key: string): Observable<any> {
-        return Observable.of(cloneDeep(get(this.db, this.prepareKey(key))));
+        const value = get(this.db, this.prepareKey(key));
+
+        return of(cloneDeep(value));
     }
 
     getList(listName: string, fnBuilder: any): Observable<any[]> {
-        return this.getItem(listName).map((result) => {
-            result = result || {};
+        return this.getItem(listName).pipe(
+            map((result) => {
+                result = result || {};
 
-            return Object.keys(result)
-                .filter((key) => Boolean(result[key]))
-                .map((key) => result[key]);
-        });
+                return Object.keys(result)
+                    .filter((key) => Boolean(result[key]))
+                    .map((key) => result[key]);
+            })
+        );
     }
 
     removeItem(key: string) {

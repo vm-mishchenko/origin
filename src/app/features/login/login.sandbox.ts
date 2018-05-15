@@ -1,7 +1,8 @@
 import {Injectable, NgZone} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {filter, first, map} from 'rxjs/operators';
 import {EventBusService} from '../../application/event-bus';
 import {LoginAction} from './actions/login.action';
 import {LogoutAction} from './actions/logout.action';
@@ -23,13 +24,15 @@ export class LoginSandbox {
                 private zone: NgZone) {
         this.setUpInitialUserState();
 
-        this.eventBusService.actions$
-            .filter((action) => action instanceof LoginAction)
-            .map((action: LoginAction) => this.signIn(action.isGuest)).subscribe();
+        this.eventBusService.actions$.pipe(
+            filter((action) => action instanceof LoginAction),
+            map((action: LoginAction) => this.signIn(action.isGuest))
+        ).subscribe();
 
-        this.eventBusService.actions$
-            .filter((action) => action instanceof LogoutAction)
-            .map(() => this.signOut()).subscribe();
+        this.eventBusService.actions$.pipe(
+            filter((action) => action instanceof LogoutAction),
+            map(() => this.signOut())
+        ).subscribe();
     }
 
     signIn(isGuest: boolean) {
@@ -39,7 +42,9 @@ export class LoginSandbox {
     }
 
     signOut() {
-        this.currentUser$.first().subscribe((user) => {
+        this.currentUser$.pipe(
+            first()
+        ).subscribe((user) => {
             if (user.state.uid === LOGIN_GUEST_UID) {
                 localStorage.setItem(LOGIN_IS_GUEST_USER, null);
 
@@ -87,15 +92,15 @@ export class LoginSandbox {
         if (JSON.parse(localStorage.getItem(LOGIN_IS_GUEST_USER))) {
             this.onSuccessSignIn(this.getGuestUserData());
         } else {
-            this.firebaseAuth.authState
-                .first()
-                .subscribe((user) => {
-                    if (user) {
-                        this.onSuccessSignIn(user);
-                    } else {
-                        this.updateUser(null);
-                    }
-                });
+            this.firebaseAuth.authState.pipe(
+                first()
+            ).subscribe((user) => {
+                if (user) {
+                    this.onSuccessSignIn(user);
+                } else {
+                    this.updateUser(null);
+                }
+            });
         }
     }
 
