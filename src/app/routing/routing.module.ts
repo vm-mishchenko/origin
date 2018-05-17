@@ -8,7 +8,6 @@ import {PageControllerComponent, PageModule} from '../features/page';
 const routes: Routes = [
     {
         path: 'login',
-        //loadChildren: '../features/login/login.module#LoginModule',
         component: LoginPageControllerComponent,
         canActivate: [
             LoginPageGuard
@@ -41,7 +40,7 @@ const routes: Routes = [
         LoginModule,
         HomeModule,
         PageModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes, {useHash: true})
     ],
     exports: [
         RouterModule
