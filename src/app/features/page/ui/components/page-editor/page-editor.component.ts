@@ -1,15 +1,28 @@
-import {ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Component,
+    Injector,
+    Input,
+    OnChanges,
+    OnDestroy,
+    OnInit,
+    SimpleChanges
+} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {
+    CopyPlugin,
     IPickOutAreaConfig,
-    IWallConfiguration,
     IWallModel,
+    IWallUiApi,
     RemoveBrickEvent,
     RemoveBricksEvent,
     SelectedBrickEvent,
+    SelectionPlugin,
     TurnBrickIntoEvent,
-    WallApi,
-    WallModelFactory
+    UNDO_REDO_API_NAME,
+    UndoRedoPlugin,
+    WallModelFactory,
+    WallPluginInitializedEvent
 } from 'ngx-wall';
 import {Subject, Subscription} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
@@ -34,94 +47,103 @@ export class PageEditorComponent implements OnChanges, OnDestroy, OnInit {
 
     pageForm: FormGroup;
     wallModel: IWallModel;
-    wallConfiguration: IWallConfiguration;
 
-    private pageFormSubscription: Subscription;
-    private wallModelSubscription: any;
+    private wallUiApi: IWallUiApi;
 
     private pageChanges$ = new Subject();
-    private pageChangesSubscription: Subscription;
-
-    private wallApi: WallApi;
+    private subscriptions: Subscription[] = [];
 
     constructor(private wallModelFactory: WallModelFactory,
                 private eventBusService: EventBusService,
                 private cd: ChangeDetectorRef,
+                private injector: Injector,
                 private fb: FormBuilder) {
         this.pageForm = this.fb.group({
             title: this.fb.control('')
         });
 
-        this.pageFormSubscription = this.pageForm.valueChanges.subscribe(() => {
-            this.updatePage();
-        });
-
-        this.wallConfiguration = {
-            onRegisterApi: (api: WallApi) => {
-                this.wallApi = api;
-
-                this.wallApi.core.subscribe((e) => {
-                    if (e instanceof SelectedBrickEvent) {
-                        this.dispatch(new SelectedBricksEvent(e.selectedBrickIds));
-                    }
-                });
-            }
-        };
+        this.subscriptions.push(
+            this.pageForm.valueChanges.subscribe(() => {
+                this.updatePage();
+            })
+        );
 
         // initialize wall model
-        this.wallModel = this.wallModelFactory.create();
-
-        this.wallModelSubscription = this.wallModel.subscribe((event) => {
-            if (event instanceof RemoveBrickEvent && event.brick.tag === 'page') {
-                this.removePage(event.brick.state.id);
-            }
-
-            if (event instanceof RemoveBricksEvent) {
-                event.bricks.filter((removedBrick) => removedBrick.tag === 'page')
-                    .forEach((removedBrick) => this.removePage(removedBrick.state.id));
-            }
-
-            if (event instanceof TurnBrickIntoEvent) {
-                if (event.newTag === 'page') {
-                    const addPageEvent = new AddPageEvent();
-
-                    addPageEvent.pageId = event.brickId;
-                    addPageEvent.parentPageId = this.page.id;
-
-                    this.dispatch(addPageEvent);
-                }
-            }
-
-            this.updatePage();
+        this.wallModel = this.wallModelFactory.create({
+            plugins: [
+                new CopyPlugin(this.injector),
+                new UndoRedoPlugin(this.injector),
+                new SelectionPlugin(this.injector)
+            ]
         });
+
+        this.subscriptions.push(
+            this.wallModel.subscribe((e) => {
+                if (e instanceof WallPluginInitializedEvent) {
+                    this.wallUiApi = this.wallModel.api.ui;
+
+                    this.subscriptions.push(this.wallUiApi.subscribe((uiEvent) => {
+                        if (uiEvent instanceof SelectedBrickEvent) {
+                            this.dispatch(new SelectedBricksEvent(uiEvent.selectedBrickIds));
+                        }
+                    }));
+                }
+            })
+        );
+
+        this.subscriptions.push(
+            this.wallModel.api.core.subscribe((event) => {
+                if (event instanceof RemoveBrickEvent && event.brick.tag === 'page') {
+                    this.removePage(event.brick.state.id);
+                }
+
+                if (event instanceof RemoveBricksEvent) {
+                    event.bricks.filter((removedBrick) => removedBrick.tag === 'page')
+                        .forEach((removedBrick) => this.removePage(removedBrick.state.id));
+                }
+
+                if (event instanceof TurnBrickIntoEvent) {
+                    if (event.newTag === 'page') {
+                        const addPageEvent = new AddPageEvent();
+
+                        addPageEvent.pageId = event.brickId;
+                        addPageEvent.parentPageId = this.page.id;
+
+                        this.dispatch(addPageEvent);
+                    }
+                }
+
+                this.updatePage();
+            })
+        );
     }
 
     ngOnInit() {
         this.pickOutAreaConfig.scrollableContainer = this.scrollableContainer;
 
-        this.pageChangesSubscription = this.pageChanges$.pipe(
-            debounceTime(500)
-        ).subscribe((newPageData) => {
-            this.dispatch(new UpdatePageContentEvent(this.page.id, newPageData));
-        });
+        this.subscriptions.push(
+            this.pageChanges$.pipe(
+                debounceTime(500)
+            ).subscribe((newPageData) => {
+                this.dispatch(new UpdatePageContentEvent(this.page.id, newPageData));
+            })
+        );
     }
 
     ngOnChanges(changes: SimpleChanges) {
         if (this.page) {
-            // todo: extremely inefficient operation
-
             // new page selected
             if (!changes.page.previousValue || this.page.id !== changes.page.previousValue.id) {
-                if (this.wallApi) {
-                    this.wallApi.features.undo.clear();
+                if (this.wallModel) {
+                    this.wallModel.api[UNDO_REDO_API_NAME].clear();
                 }
 
-                this.wallModel.setPlan(this.page.body);
+                this.wallModel.api.core.setPlan(this.page.body);
             }
 
             if (changes.page.previousValue && this.page.id === changes.page.previousValue.id) {
-                if (this.wallModel.getBricksCount() !== this.page.body.bricks.length) {
-                    this.wallModel.setPlan(this.page.body);
+                if (this.wallModel.api.core.getBricksCount() !== this.page.body.bricks.length) {
+                    this.wallModel.api.core.setPlan(this.page.body);
                 }
             }
 
@@ -134,24 +156,25 @@ export class PageEditorComponent implements OnChanges, OnDestroy, OnInit {
     }
 
     ngOnDestroy() {
-        this.pageFormSubscription.unsubscribe();
-        this.pageChangesSubscription.unsubscribe();
+        this.subscriptions.forEach((subscription) => {
+            subscription.unsubscribe();
+        });
     }
 
     onEnterHandler() {
-        const brickIds = this.wallModel.getBrickIds();
+        const brickIds = this.wallModel.api.core.getBrickIds();
 
         if (!brickIds.length) {
-            this.wallModel.addBrickAtStart('text');
+            this.wallModel.api.core.addBrickAtStart('text');
         } else {
-            this.wallApi.core.focusOnBrickId(brickIds[0]);
+            this.wallUiApi.focusOnBrickId(brickIds[0]);
         }
     }
 
     private updatePage() {
         this.pageChanges$.next({
             title: this.pageForm.get('title').value,
-            body: this.wallModel.getPlan()
+            body: this.wallModel.api.core.getPlan()
         });
     }
 
