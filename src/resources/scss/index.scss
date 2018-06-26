@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../../../../ngx-wall/projects/ngx-wall/src/lib/resources/scss/lib";
+@import '~@angular/cdk/overlay';
+
+@include cdk-overlay;
 
 body, html {
   height: 100vh;
