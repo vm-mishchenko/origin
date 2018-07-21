@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
-import {UploadTaskSnapshot} from '@firebase/storage-types';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {IFileUploader, IFileUploadTask} from 'ngx-wall';
-import {forkJoin, Observable} from 'rxjs';
-import {mergeMap, tap} from 'rxjs/operators';
+import {forkJoin, from, Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 import {IUserData, LoginDataStreams} from '../../features/login';
 import {ILogger, LoggerFactoryService} from '../logger';
 import {FIREBASE_LOCAL_STORAGE_KEY} from './firebase-file-uploader.constant';
@@ -38,21 +37,24 @@ export class FirebaseFileUploaderService implements IFileUploader {
     }
 
     upload(filePath: string, file: File): IFileUploadTask {
+        const fileRef = this.storage.ref(filePath);
         const uploadTask = this.storage.upload(filePath, file);
 
         return {
             snapshotChanges: () => {
-                return uploadTask.snapshotChanges().pipe(
-                    mergeMap((uploadTaskSnapshot: UploadTaskSnapshot) => {
-                        return uploadTaskSnapshot.ref.getDownloadURL().then((downloadURL: string) => {
+                // wait until download will be finished
+                return from(uploadTask.then(() => {
+                    // only after file is uploaded we could get downloaded url
+                    return fileRef.getDownloadURL()
+                        .toPromise()
+                        .then(function (downloadURL) {
                             return {
-                                ...uploadTaskSnapshot,
                                 downloadURL
                             };
                         });
-                    })
-                );
+                }));
             },
+
             percentageChanges: uploadTask.percentageChanges
         };
     }
