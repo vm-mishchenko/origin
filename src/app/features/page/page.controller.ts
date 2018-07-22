@@ -227,6 +227,8 @@ export class PageController {
     }
 
     moveBricks(sourcePagedId: string, movedBrickIds: string[], targetPageId: string): Promise<any> {
+
+
         return Promise.all([
             this.getPageFromPagesCollectionOrRepository(sourcePagedId),
             this.getPageFromPagesCollectionOrRepository(targetPageId)
