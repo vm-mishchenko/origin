@@ -1,4 +1,4 @@
-bootstrap@4.0.0
+bootstrap@4.1.2
 MIT
 The MIT License (MIT)
 
@@ -23,11 +23,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-open-iconic@1.1.1
-MIT License
-MIT License
-
-codemirror@5.37.0
+codemirror@5.39.2
 MIT
 MIT License
 
@@ -50,6 +46,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+open-iconic@1.1.1
+MIT License
+MIT License
 
 core-js@2.5.6
 MIT
@@ -97,7 +97,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-lodash@4.17.5
+lodash@4.17.10
 MIT
 Copyright JS Foundation and other contributors <https://js.foundation/>
 
@@ -147,19 +147,11 @@ maintained libraries used by this software which have their own
 licenses; we recommend you read them, as their terms may differ from the
 terms above.
 
-@firebase/storage@0.2.2
+@firebase/util@0.2.1
 Apache-2.0
 Apache-2.0
 
-@firebase/app@0.3.1
-Apache-2.0
-Apache-2.0
-
-@firebase/util@0.2.0
-Apache-2.0
-Apache-2.0
-
-rxjs@6.1.0
+rxjs@6.3.3
 Apache-2.0
 Apache License
                          Version 2.0, January 2004
@@ -363,6 +355,30 @@ Apache License
  See the License for the specific language governing permissions and
  limitations under the License.
 
+@firebase/firestore@0.6.0
+Apache-2.0
+Apache-2.0
+
+@firebase/functions@0.3.0
+Apache-2.0
+Apache-2.0
+
+@firebase/webchannel-wrapper@0.2.8
+Apache-2.0
+Apache-2.0
+
+@firebase/storage@0.2.3
+Apache-2.0
+Apache-2.0
+
+@firebase/database@0.3.4
+Apache-2.0
+Apache-2.0
+
+firebase@5.3.0
+Apache-2.0
+Apache-2.0
+
 webpack@4.6.0
 MIT
 Copyright JS Foundation and other contributors
@@ -386,15 +402,42 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-firebase@5.0.2
+whatwg-fetch@2.0.4
+MIT
+Copyright (c) 2014-2016 GitHub, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+@firebase/messaging@0.3.5
 Apache-2.0
 Apache-2.0
 
-@firebase/polyfill@0.3.1
+@firebase/polyfill@0.3.3
 Apache-2.0
 Apache-2.0
 
-@firebase/auth@0.5.2
+@firebase/logger@0.1.1
+Apache-2.0
+Apache-2.0
+
+@firebase/auth@0.7.1
 Apache-2.0
 Apache License
                            Version 2.0, January 2004
@@ -598,49 +641,6 @@ Apache License
    See the License for the specific language governing permissions and
    limitations under the License.
 
-@firebase/database@0.3.1
-Apache-2.0
-Apache-2.0
-
-@firebase/firestore@0.5.2
-Apache-2.0
-Apache-2.0
-
-@firebase/functions@0.2.2
-Apache-2.0
-Apache-2.0
-
-@firebase/logger@0.1.1
-Apache-2.0
-Apache-2.0
-
-@firebase/webchannel-wrapper@0.2.8
-Apache-2.0
-Apache-2.0
-
-whatwg-fetch@2.0.4
-MIT
-Copyright (c) 2014-2016 GitHub, Inc.
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-@firebase/messaging@0.3.2
+@firebase/app@0.3.3
 Apache-2.0
 Apache-2.0
