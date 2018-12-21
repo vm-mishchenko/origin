@@ -22,7 +22,7 @@ import {
     UNDO_REDO_API_NAME,
     UndoRedoPlugin,
     WallModelFactory,
-    WallRegisterApiEvent
+    WallPluginInitializedEvent
 } from 'ngx-wall';
 import {Subject, Subscription} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
@@ -79,7 +79,7 @@ export class PageEditorComponent implements OnChanges, OnDestroy, OnInit {
 
         this.subscriptions.push(
             this.wallModel.subscribe((e) => {
-                if ((e instanceof WallRegisterApiEvent) && this.wallModel.api.ui) {
+                if ((e instanceof WallPluginInitializedEvent) && this.wallModel.api.ui) {
                     this.wallUiApi = this.wallModel.api.ui;
 
                     this.subscriptions.push(this.wallUiApi.subscribe((uiEvent) => {
