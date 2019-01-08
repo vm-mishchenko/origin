@@ -36,7 +36,6 @@ import {PageBreadcrumbComponent} from './ui/components/page-breadcrumb/page-brea
 import {PageEditorComponent} from './ui/components/page-editor/page-editor.component';
 import {PageTreeItemComponent} from './ui/components/page-tree/page-tree-item.component';
 import {PageTreeComponent} from './ui/components/page-tree/page-tree.component';
-import {PageControllerComponent} from './ui/page-controllers/page-editor/page.controller.component';
 
 @NgModule({
     imports: [
@@ -78,7 +77,6 @@ import {PageControllerComponent} from './ui/page-controllers/page-editor/page.co
     declarations: [
         PageTreeComponent,
         PageTreeItemComponent,
-        PageControllerComponent,
         PageEditorComponent,
         PageBrickComponent,
         PageBreadcrumbComponent
@@ -92,7 +90,6 @@ import {PageControllerComponent} from './ui/page-controllers/page-editor/page.co
     exports: [
         PageTreeComponent,
         PageTreeItemComponent,
-        PageControllerComponent,
         PageEditorComponent,
         PageBreadcrumbComponent
     ],

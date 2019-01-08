@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {EventBusService} from '../../../../../application/event-bus';
-import {SwitchMenuEvent} from '../../../../../application/origin/events/switch-menu.event';
-import {PageInUrlSelectedEvent} from '../../../events/page-in-url-selected.event';
-import {PageUiController} from '../../../page-ui.controller';
+import {EventBusService} from '../../../../application/event-bus';
+import {SwitchMenuEvent} from '../../../../application/origin/events/switch-menu.event';
+import {PageInUrlSelectedEvent} from '../../../../features/page/events/page-in-url-selected.event';
+import {PageUiController} from '../../../../features/page/page-ui.controller';
 
 @Component({
-    templateUrl: './page.controller.component.html',
-    styleUrls: ['./page.controller.component.scss']
+    templateUrl: './page-editor-view.component.html',
+    styleUrls: ['./page-editor-view.component.scss']
 })
-export class PageControllerComponent implements OnInit {
+export class PageEditorViewComponent implements OnInit {
     constructor(public pageUiController: PageUiController,
                 private route: ActivatedRoute,
                 private eventBusService: EventBusService) {

@@ -11,6 +11,7 @@ import {LoginModule} from './features/login';
 import {PageModule} from './features/page';
 import {FirebaseFileUploaderModule} from './infrastructure/firebase-file-uploader';
 import {RoutingModule} from './routing';
+import {PageViewModule} from './views/page';
 
 @NgModule({
     imports: [
@@ -32,7 +33,10 @@ import {RoutingModule} from './routing';
         FirebaseFileUploaderModule,
 
         // features
-        PageModule
+        PageModule,
+
+        // views
+        PageViewModule
     ],
     declarations: [
         AppComponent

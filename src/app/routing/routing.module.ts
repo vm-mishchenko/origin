@@ -3,7 +3,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {AuthGuard, LoginPageGuard} from '../application/navigation';
 import {HomeComponent, HomeModule, WelcomeComponent} from '../views/home';
 import {LoginModule, LoginPageControllerComponent} from '../features/login';
-import {PageControllerComponent, PageModule} from '../features/page';
+import {PageModule} from '../features/page';
+import {PageEditorViewComponent} from '../views/page';
 
 const routes: Routes = [
     {
@@ -25,7 +26,7 @@ const routes: Routes = [
             },
             {
                 path: 'page/:id',
-                component: PageControllerComponent
+                component: PageEditorViewComponent
             }
         ]
     },
