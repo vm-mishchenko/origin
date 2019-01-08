@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {EventBusService} from '../../../../../application/event-bus';
 import {NavigateToPageEvent} from '../../../../../application/navigation';
 import {OriginUiController} from '../../../../../application/origin';
-import {AddPageEvent} from '../../../../page';
+import {AddPageEvent} from '../../../../../features/page';
 
 @Component({
     selector: 'o-home',
