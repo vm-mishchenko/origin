@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthGuard, LoginPageGuard} from '../application/navigation';
-import {HomeComponent, HomeModule, WelcomeComponent} from '../pages/home';
+import {HomeComponent, HomeModule, WelcomeComponent} from '../views/home';
 import {LoginModule, LoginPageControllerComponent} from '../features/login';
 import {PageControllerComponent, PageModule} from '../features/page';
 
