@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {EventBusModule} from '../../application/event-bus/event-bus.module';
 import {StorageModule} from '../../infrastructure/storage';
@@ -15,16 +15,19 @@ import {LoginSandbox} from './login.sandbox';
  */
 @NgModule({
     imports: [
-        // app modules
         EventBusModule,
         StorageModule,
         AngularFireAuthModule,
-    ],
-    declarations: [],
-    providers: [
-        LoginSandbox,
-        LoginDataStreams
-    ],
+    ]
 })
 export class LoginServiceModule {
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: LoginServiceModule,
+            providers: [
+                LoginSandbox,
+                LoginDataStreams
+            ]
+        };
+    }
 }

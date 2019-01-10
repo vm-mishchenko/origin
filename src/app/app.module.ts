@@ -5,8 +5,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FirebaseOptionsToken} from 'angularfire2';
 import {AppComponent} from './app.component';
 import {FIREBASE_CONFIG} from './app.config';
+import {EventBusModule} from './application/event-bus/event-bus.module';
 import {NavigationModule} from './application/navigation';
 import {OriginModule} from './application/origin';
+import {LoginServiceModule} from './features/login-service';
 import {LoginUiModule} from './features/login-ui';
 import {PageModule} from './features/page';
 import {FirebaseFileUploaderModule} from './infrastructure/firebase-file-uploader';
@@ -18,9 +20,9 @@ import {PageViewModule} from './views/page';
         // angular
         BrowserModule,
         RouterModule,
+        EventBusModule.forRoot(),
 
         // 3d-party
-        NgbModule.forRoot(),
         NgbModule.forRoot(),
 
         // Application
@@ -34,6 +36,7 @@ import {PageViewModule} from './views/page';
 
         // features
         PageModule,
+        LoginServiceModule.forRoot(),
 
         // views
         PageViewModule
