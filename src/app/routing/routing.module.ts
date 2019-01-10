@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthGuard} from '../application/navigation';
-import {PageModule} from '../features/page';
+import {PageUiModule} from '../features/page-ui';
 import {HomeComponent, HomeModule, WelcomeComponent} from '../views/home';
 import {PageEditorViewComponent} from '../views/page';
 
@@ -44,7 +44,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         HomeModule,
-        PageModule,
+        PageUiModule,
         RouterModule.forRoot(routes, {useHash: true})
     ],
     exports: [

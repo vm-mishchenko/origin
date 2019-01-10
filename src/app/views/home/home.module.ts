@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {EventBusModule} from '../../application/event-bus/event-bus.module';
 import {NavigationModule} from '../../application/navigation';
 import {LoginUiModule} from '../../features/login-ui';
-import {PageModule} from '../../features/page/page.module';
+import {PageUiModule} from '../../features/page-ui/page-ui.module';
 import {WelcomeComponent} from './ui/components/welcome/welcome.component';
 import {HomeComponent} from './ui/page-controlles/home/home.component';
 
@@ -12,7 +12,7 @@ import {HomeComponent} from './ui/page-controlles/home/home.component';
     imports: [
         CommonModule,
         RouterModule,
-        PageModule,
+        PageUiModule,
         NavigationModule,
         LoginUiModule,
         EventBusModule

@@ -9,7 +9,7 @@ import {IPageDataModel} from '../../../../features/page-service/domain/page-data
 import {MoveBricksToPageEvent} from '../../../../features/page-service/events/move-bricks-to-page.event';
 import {MovePageEvent} from '../../../../features/page-service/events/move-page.event';
 import {SelectedBricksEvent} from '../../../../features/page-service/events/selected-bricks.event';
-import {PageUiController} from '../../../../features/page/page-ui.controller';
+import {PageUiController} from '../../../../features/page-ui/page-ui.controller';
 import {PageController} from '../../../../features/page-service/page.controller';
 import {HomeController} from '../../../home/ui/page-controlles/home/home.controller';
 

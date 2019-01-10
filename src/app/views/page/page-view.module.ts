@@ -1,12 +1,12 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {PageModule} from '../../features/page';
+import {PageUiModule} from '../../features/page-ui';
 import {PageEditorViewComponent} from './ui/page-editor-view/page-editor-view.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        PageModule
+        PageUiModule
     ],
     declarations: [
         PageEditorViewComponent

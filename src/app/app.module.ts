@@ -10,7 +10,7 @@ import {NavigationModule} from './application/navigation';
 import {OriginModule} from './application/origin';
 import {LoginServiceModule} from './features/login-service';
 import {LoginUiModule} from './features/login-ui';
-import {PageModule} from './features/page';
+import {PageUiModule} from './features/page-ui';
 import {FirebaseFileUploaderModule} from './infrastructure/firebase-file-uploader';
 import {RoutingModule} from './routing';
 import {PageViewModule} from './views/page';
@@ -35,7 +35,7 @@ import {PageViewModule} from './views/page';
         FirebaseFileUploaderModule,
 
         // features
-        PageModule,
+        PageUiModule,
         LoginServiceModule.forRoot(),
 
         // views

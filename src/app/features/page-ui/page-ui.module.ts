@@ -68,7 +68,7 @@ import {PageTreeComponent} from './ui/components/page-tree/page-tree.component';
         PageBrickComponent
     ]
 })
-export class PageModule {
+export class PageUiModule {
     constructor(private brickRegistry: BrickRegistry) {
         this.brickRegistry.register({
             tag: 'page',

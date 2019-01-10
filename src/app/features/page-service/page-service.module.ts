@@ -22,7 +22,7 @@ import {LoggerModule} from '../../infrastructure/logger';
 import {StorageModule} from '../../infrastructure/storage';
 import {UtilsModule} from '../../infrastructure/utils';
 import {LoginServiceModule} from '../login-service';
-import {PageUiController} from '../page/page-ui.controller';
+import {PageUiController} from '../page-ui/page-ui.controller';
 import {PageRepository} from './domain/page.repository';
 import {PageGateway} from './infrastructure/page.gateway';
 import {PageController} from './page.controller';
