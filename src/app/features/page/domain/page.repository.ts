@@ -3,7 +3,7 @@ import {WallModelFactory} from 'ngx-wall';
 import {Observable} from 'rxjs';
 import {first, map} from 'rxjs/operators';
 import {Guid} from '../../../infrastructure/utils';
-import {IUserData, LoginDataStreams} from '../../login';
+import {IUserData, LoginDataStreams} from '../../login-service';
 import {PageGateway} from '../infrastructure/page.gateway';
 import {IPageDataModel} from './page-data-model';
 import {Page} from './page.model';

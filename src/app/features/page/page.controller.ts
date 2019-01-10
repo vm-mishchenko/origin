@@ -6,7 +6,7 @@ import {NavigateToDefaultPageEvent} from '../../application/navigation/events/na
 import {Collection} from '../../core/model/collection';
 import {FirebaseFileUploaderService} from '../../infrastructure/firebase-file-uploader';
 import {ILogger, LoggerFactoryService} from '../../infrastructure/logger';
-import {IUserData, LoginDataStreams} from '../login';
+import {IUserData, LoginDataStreams} from '../login-service';
 import {Page} from './domain/page.model';
 import {PageRepository} from './domain/page.repository';
 import {AddPageEvent} from './events/add-page.event';

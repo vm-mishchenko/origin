@@ -26,7 +26,7 @@ import {FirebaseStorageModule} from '../../infrastructure/firebase-storage';
 import {LoggerModule} from '../../infrastructure/logger';
 import {StorageModule} from '../../infrastructure/storage';
 import {UtilsModule} from '../../infrastructure/utils';
-import {LoginModule} from '../login';
+import {LoginServiceModule} from '../login-service';
 import {PageRepository} from './domain/page.repository';
 import {PageGateway} from './infrastructure/page.gateway';
 import {PageBrickComponent} from './page-brick/page-brick.component';
@@ -45,7 +45,7 @@ import {PageTreeComponent} from './ui/components/page-tree/page-tree.component';
         ReactiveFormsModule,
 
         // app modules
-        LoginModule,
+        LoginServiceModule,
         EventBusModule,
 
         // wall module

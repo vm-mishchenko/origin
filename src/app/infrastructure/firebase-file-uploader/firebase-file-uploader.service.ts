@@ -3,7 +3,7 @@ import {AngularFireStorage} from 'angularfire2/storage';
 import {IFileUploader, IFileUploadTask} from 'ngx-wall';
 import {forkJoin, from, Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {IUserData, LoginDataStreams} from '../../features/login';
+import {IUserData, LoginDataStreams} from '../../features/login-service';
 import {ILogger, LoggerFactoryService} from '../logger';
 import {FIREBASE_LOCAL_STORAGE_KEY} from './firebase-file-uploader.constant';
 

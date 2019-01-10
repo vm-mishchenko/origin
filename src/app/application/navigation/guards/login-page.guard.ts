@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CanActivate} from '@angular/router';
 import {filter, map} from 'rxjs/operators';
-import {LoginDataStreams} from '../../../features/login';
+import {LoginDataStreams} from '../../../features/login-service';
 import {NavigationService} from '../navigation.service';
 
 @Injectable()

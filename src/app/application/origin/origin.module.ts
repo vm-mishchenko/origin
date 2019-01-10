@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {FileUploaderModule, FileUploaderService} from 'ngx-wall';
 import {filter} from 'rxjs/operators';
-import {IUserData, LOGIN_GUEST_UID, LoginDataStreams, LoginModule} from '../../features/login';
+import {IUserData, LOGIN_GUEST_UID, LoginDataStreams, LoginServiceModule} from '../../features/login-service';
 import {ILogger, LoggerFactoryService} from '../../infrastructure/logger';
 import {StorageService} from '../../infrastructure/storage';
 import {OriginUiController} from './origin-ui.controller';
 
 @NgModule({
     imports: [
-        LoginModule,
+        LoginServiceModule,
         FileUploaderModule
     ],
     exports: [],

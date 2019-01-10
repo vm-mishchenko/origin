@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {EventBusService} from '../../../../../application/event-bus';
 import {StorageService} from '../../../../../infrastructure/storage';
-import {LogoutAction} from '../../../actions/logout.action';
-import {LoginDataStreams} from '../../../login-data-streams.class';
+import {LogoutAction} from '../../../../login-service';
+import {LoginDataStreams} from '../../../../login-service';
 
 @Component({
     selector: 'o-user-info',

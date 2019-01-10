@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
-import {LoginDataStreams} from '../../features/login';
+import {LoginDataStreams} from '../../features/login-service';
 import {ILogger, LoggerFactoryService} from '../../infrastructure/logger';
 import {EventBusService} from '../event-bus/event-bus.service';
 import {NavigateToDefaultPageEvent} from './events/navigate-to-default-page.event';

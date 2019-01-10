@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {LoginModule} from '../../features/login';
+import {LoginServiceModule} from '../../features/login-service';
 import {LoggerModule} from '../../infrastructure/logger';
 import {StorageModule} from '../../infrastructure/storage/storage.module';
 import {EventBusModule} from '../event-bus/event-bus.module';
@@ -10,7 +10,7 @@ import {NavigationService} from './navigation.service';
 
 @NgModule({
     imports: [
-        LoginModule,
+        LoginServiceModule,
         LoggerModule,
         RouterModule,
         EventBusModule,

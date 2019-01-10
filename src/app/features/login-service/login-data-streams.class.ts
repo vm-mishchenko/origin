@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ConnectableObservable} from 'rxjs/internal/observable/ConnectableObservable';
-import {map, publishReplay, refCount} from 'rxjs/operators';
+import {map, publishReplay} from 'rxjs/operators';
 import {IUserData} from './domain/user-data.interface';
 import {LoginSandbox} from './login.sandbox';
 
-@Injectable()
+@Injectable() 
 export class LoginDataStreams {
     user$: Observable<IUserData>;
 
