@@ -7,7 +7,7 @@ import {AppComponent} from './app.component';
 import {FIREBASE_CONFIG} from './app.config';
 import {NavigationModule} from './application/navigation';
 import {OriginModule} from './application/origin';
-import {LoginModule} from './features/login';
+import {LoginUiModule} from './features/login-ui';
 import {PageModule} from './features/page';
 import {FirebaseFileUploaderModule} from './infrastructure/firebase-file-uploader';
 import {RoutingModule} from './routing';
@@ -25,7 +25,7 @@ import {PageViewModule} from './views/page';
 
         // Application
         OriginModule,
-        LoginModule,
+        LoginUiModule,
         NavigationModule,
         RoutingModule,
 

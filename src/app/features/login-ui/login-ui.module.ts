@@ -3,8 +3,8 @@ import {NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {EventBusModule} from '../../application/event-bus/event-bus.module';
 import {BusyStatusModule} from '../../components/busy-status/busy-status.module';
-import {LoginComponent} from './ui/component/login/login.component';
-import {UserInfoComponent} from './ui/component/user-info/user-info.component';
+import {LoginComponent} from './component/login/login.component';
+import {UserInfoComponent} from './component/user-info/user-info.component';
 
 @NgModule({
     imports: [
@@ -23,5 +23,5 @@ import {UserInfoComponent} from './ui/component/user-info/user-info.component';
         UserInfoComponent
     ]
 })
-export class LoginModule {
+export class LoginUiModule {
 }
