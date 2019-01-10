@@ -8,10 +8,15 @@
                     </button>
                 </div>
 
-                <o-page-breadcrumb></o-page-breadcrumb>
+                <o-page-breadcrumb [selectedPageId$]="pageEditorViewController.homeController.selectedPageId$"
+                    (selectedPageId)="pageEditorViewController.navigateToPage($event)">
+
+                </o-page-breadcrumb>
             </div>
         </div>
     </div>
 
-    <o-page-editor [scrollableContainer]="container" [page]="pageUiController.selectedPage$ | async"></o-page-editor>
+    <o-page-editor [scrollableContainer]="container"
+                   [page]="pageEditorViewController.selectedPage$ | async">
+    </o-page-editor>
 </div>

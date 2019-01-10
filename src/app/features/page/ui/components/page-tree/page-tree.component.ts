@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Radar, TowService} from 'ngx-wall';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -19,6 +19,7 @@ import {IPageTreeItem} from './page-tree.interfaces';
 export class PageTreeComponent implements OnInit {
     pageTree$: Observable<IPageTreeItem[]>;
 
+    @Input() selectedPageId$: Observable<string>;
     @Output() selectedPage: EventEmitter<string> = new EventEmitter();
 
     // needed for restoring isOpen state
@@ -35,7 +36,7 @@ export class PageTreeComponent implements OnInit {
     ngOnInit() {
         this.pageTree$ = combineLatest(
             this.pageUiController.pageTreeComponent$,
-            this.pageUiController.selectedPageId$
+            this.selectedPageId$
         ).pipe(
             map(([pageTreeComponents, selectedPageId]) => {
                 const previousFlatPageItemList = this.previousFlatPageItemList.slice(0);

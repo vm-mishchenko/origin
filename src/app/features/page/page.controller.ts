@@ -76,6 +76,7 @@ export class PageController {
 
             if (action instanceof PageInUrlSelectedEvent) {
                 this.onPageInUrlSelected(action.pageId);
+                this.selectedPageId = action.pageId;
             }
 
             if (action instanceof PageBrickDeletedEvent) {
@@ -88,10 +89,6 @@ export class PageController {
 
             if (action instanceof MoveBricksToPageEvent) {
                 this.moveBricks(action.sourcePagedId, action.movedBrickIds, action.targetPageId);
-            }
-
-            if (action instanceof PageInUrlSelectedEvent) {
-                this.selectedPageId = action.pageId;
             }
         });
 

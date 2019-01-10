@@ -5,7 +5,7 @@
 
     <br>
 
-    <o-page-tree (selectedPage)="onSelectedPage($event)"></o-page-tree>
+    <o-page-tree [selectedPageId$]="homeController.selectedPageId$" (selectedPage)="onSelectedPage($event)"></o-page-tree>
 
     <br>
 

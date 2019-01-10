@@ -1,8 +1,6 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {EventBusService} from '../../../../../application/event-bus';
-import {PageSelectedEvent} from '../../../events/page-selected.event';
 import {IPageTreeDataItem, PageUiController} from '../../../page-ui.controller';
 
 @Component({
@@ -12,16 +10,18 @@ import {IPageTreeDataItem, PageUiController} from '../../../page-ui.controller';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageBreadcrumbComponent implements OnInit {
+    @Input() selectedPageId$: Observable<string>;
+    @Output() selectedPageId: EventEmitter<string> = new EventEmitter();
+
     breadcrumbs$: Observable<any[]>;
 
-    constructor(private pageUiController: PageUiController,
-                private eventBusService: EventBusService) {
+    constructor(private pageUiController: PageUiController) {
     }
 
     ngOnInit() {
         this.breadcrumbs$ = combineLatest(
             this.pageUiController.pageTreeComponent$,
-            this.pageUiController.selectedPageId$
+            this.selectedPageId$
         ).pipe(
             map(([pageTreeComponents, selectedPageId]) => {
                 const pages = [];
@@ -50,6 +50,6 @@ export class PageBreadcrumbComponent implements OnInit {
     }
 
     onPageSelected(pageTreeDataItem: IPageTreeDataItem) {
-        this.eventBusService.dispatch(new PageSelectedEvent(pageTreeDataItem.id));
+        this.selectedPageId.next(pageTreeDataItem.id);
     }
 }
