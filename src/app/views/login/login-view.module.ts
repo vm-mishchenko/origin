@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginPageGuard} from '../../application/navigation';
 import {LoginUiModule} from '../../features/login-ui';

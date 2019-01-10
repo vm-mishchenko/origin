@@ -1,17 +1,17 @@
-<li [tow-slave]='pageTreeItem.id'
+<li [ngClass]="{'dropzone': pageTreeItem.isDropZone,
+        'w-selection-list__selected_item': pageTreeItem.isSelected}"
     [spot]='{isPage: true, pageId: pageTreeItem.id}'
-    [ngClass]="{'dropzone': pageTreeItem.isDropZone,
-        'w-selection-list__selected_item': pageTreeItem.isSelected}">
+    [tow-slave]='pageTreeItem.id'>
 
-    <div class="w-selection-list__item" (click)="onPageSelected()">
+    <div (click)="onPageSelected()" class="w-selection-list__item">
         <div class="content">
-            <button *ngIf="pageTreeItem.isOpen" class="btn btn-link btn-sm w-btn arrow" type="button"
-                    (click)="switchChildVisibility($event)">
+            <button (click)="switchChildVisibility($event)" *ngIf="pageTreeItem.isOpen" class="btn btn-link btn-sm w-btn arrow"
+                    type="button">
                 <span class="oi oi-caret-bottom w-icon"></span>
             </button>
 
-            <button *ngIf="!pageTreeItem.isOpen" class="btn btn-link btn-sm w-btn arrow" type="button"
-                    (click)="switchChildVisibility($event)">
+            <button (click)="switchChildVisibility($event)" *ngIf="!pageTreeItem.isOpen" class="btn btn-link btn-sm w-btn arrow"
+                    type="button">
                 <span class="oi oi-caret-right w-icon"></span>
             </button>
 
@@ -23,19 +23,19 @@
         </div>
 
         <div class="w-selection-list__context-menu">
-            <button class="btn btn-link btn-sm w-btn" type="button"
-                    (click)="onDeletePage($event)">
+            <button (click)="onDeletePage($event)" class="btn btn-link btn-sm w-btn"
+                    type="button">
                 <span class="oi oi-caret-bottom oi-trash"></span>
             </button>
         </div>
 
-        <p class="no-pages" *ngIf="!pageTreeItem.pageIds.length && pageTreeItem.isOpen">
+        <p *ngIf="!pageTreeItem.pageIds.length && pageTreeItem.isOpen" class="no-pages">
             No Pages Inside
         </p>
     </div>
 
-    <ul class="w-selection-list__level-{{pageTreeItem.level}}"
-        *ngIf="pageTreeItem.pageIds.length && pageTreeItem.isOpen">
+    <ul *ngIf="pageTreeItem.pageIds.length && pageTreeItem.isOpen"
+        class="w-selection-list__level-{{pageTreeItem.level}}">
         <o-page-tree-item
                 *ngFor="let childPageTreeItem of pageTreeItem.pages;trackBy: trackById"
                 [pageTreeItem]="childPageTreeItem"></o-page-tree-item>

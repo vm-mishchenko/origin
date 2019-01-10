@@ -5,7 +5,7 @@ import {map, publishReplay} from 'rxjs/operators';
 import {IUserData} from './domain/user-data.interface';
 import {LoginSandbox} from './login.sandbox';
 
-@Injectable() 
+@Injectable()
 export class LoginDataStreams {
     user$: Observable<IUserData>;
 

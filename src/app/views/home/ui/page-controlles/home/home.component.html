@@ -5,11 +5,12 @@
 
     <br>
 
-    <o-page-tree [selectedPageId$]="homeController.selectedPageId$" (selectedPage)="onSelectedPage($event)"></o-page-tree>
+    <o-page-tree (selectedPage)="onSelectedPage($event)"
+                 [selectedPageId$]="homeController.selectedPageId$"></o-page-tree>
 
     <br>
 
-    <button type="button" (click)="onAddPage()" class="btn btn-link btn-sm w-btn o-add-page">
+    <button (click)="onAddPage()" class="btn btn-link btn-sm w-btn o-add-page" type="button">
         <span class="w-icon oi oi-plus"></span>
         <span>Add page</span>
     </button>

@@ -4,19 +4,19 @@
             <div class="col-12 page__header">
                 <div>
                     <button (click)="showMenu()" class="mobile-header btn btn-link w-btn">
-                        <span class="w-icon oi oi-menu" title="Menu" aria-hidden="true"></span>
+                        <span aria-hidden="true" class="w-icon oi oi-menu" title="Menu"></span>
                     </button>
                 </div>
 
-                <o-page-breadcrumb [selectedPageId$]="pageEditorViewController.homeController.selectedPageId$"
-                    (selectedPageId)="pageEditorViewController.navigateToPage($event)">
+                <o-page-breadcrumb (selectedPageId)="pageEditorViewController.navigateToPage($event)"
+                                   [selectedPageId$]="pageEditorViewController.homeController.selectedPageId$">
 
                 </o-page-breadcrumb>
             </div>
         </div>
     </div>
 
-    <o-page-editor [scrollableContainer]="container"
-                   [page]="pageEditorViewController.selectedPage$ | async">
+    <o-page-editor [page]="pageEditorViewController.selectedPage$ | async"
+                   [scrollableContainer]="container">
     </o-page-editor>
 </div>

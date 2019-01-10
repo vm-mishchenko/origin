@@ -1,5 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {
     CodeBrickModule,
     DividerBrickModule,
@@ -62,8 +63,7 @@ import {PageController} from './page.controller';
         PageUiController,
         PageRepository,
         PageGateway
-    ],
-    declarations: []
+    ]
 })
 export class PageServiceModule {
 }

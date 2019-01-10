@@ -19,7 +19,7 @@ import {
 import {FormControlsModule} from '../../components/form-controls';
 import {InquireModule} from '../../components/inquire';
 import {UtilsModule} from '../../infrastructure/utils';
-import {PageServiceModule} from '../page-service/page-service.module';
+import {PageServiceModule} from '../page-service';
 import {PageBrickComponent} from './page-brick/page-brick.component';
 import {PageBreadcrumbComponent} from './ui/containers/page-breadcrumb/page-breadcrumb.component';
 import {PageEditorComponent} from './ui/containers/page-editor/page-editor.component';

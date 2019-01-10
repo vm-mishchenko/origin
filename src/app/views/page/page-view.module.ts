@@ -11,11 +11,9 @@ import {PageEditorViewComponent} from './ui/page-editor-view/page-editor-view.co
     declarations: [
         PageEditorViewComponent
     ],
-    providers: [],
     exports: [
         PageEditorViewComponent
-    ],
-    entryComponents: []
+    ]
 })
 export class PageViewModule {
 }

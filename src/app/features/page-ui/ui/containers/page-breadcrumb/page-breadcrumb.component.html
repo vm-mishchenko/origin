@@ -1,9 +1,9 @@
 <ul>
     <li *ngFor="let page of breadcrumbs$ | async; let last = last">
-        <button type="button" class="btn btn-link w-btn" *ngIf="!last" (click)="onPageSelected(page)">{{page.title}}
+        <button (click)="onPageSelected(page)" *ngIf="!last" class="btn btn-link w-btn" type="button">{{page.title}}
         </button>
 
-        <button type="button" class="btn btn-link w-btn" *ngIf="last" (click)="onPageSelected(page)">{{page.title}}
+        <button (click)="onPageSelected(page)" *ngIf="last" class="btn btn-link w-btn" type="button">{{page.title}}
         </button>
 
         <span *ngIf="!last">/</span>

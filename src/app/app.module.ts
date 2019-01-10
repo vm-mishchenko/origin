@@ -1,3 +1,4 @@
+import {OverlayModule} from '@angular/cdk/overlay';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
@@ -9,11 +10,9 @@ import {EventBusModule} from './application/event-bus/event-bus.module';
 import {NavigationModule} from './application/navigation';
 import {OriginModule} from './application/origin';
 import {LoginServiceModule} from './features/login-service';
-import {LoginUiModule} from './features/login-ui';
-import {PageUiModule} from './features/page-ui';
 import {FirebaseFileUploaderModule} from './infrastructure/firebase-file-uploader';
+import {StorageModule} from './infrastructure/storage';
 import {RoutingModule} from './routing';
-import {PageViewModule} from './views/page';
 
 @NgModule({
     imports: [
@@ -21,25 +20,22 @@ import {PageViewModule} from './views/page';
         BrowserModule,
         RouterModule,
         EventBusModule.forRoot(),
+        StorageModule.forRoot(),
+        NavigationModule.forRoot(),
 
         // 3d-party
         NgbModule.forRoot(),
 
         // Application
         OriginModule,
-        LoginUiModule,
-        NavigationModule,
         RoutingModule,
+        OverlayModule,
 
         // infrastructure
         FirebaseFileUploaderModule,
 
         // features
-        PageUiModule,
         LoginServiceModule.forRoot(),
-
-        // views
-        PageViewModule
     ],
     declarations: [
         AppComponent

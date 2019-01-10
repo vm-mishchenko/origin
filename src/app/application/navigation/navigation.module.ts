@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {LoginServiceModule} from '../../features/login-service';
 import {LoggerModule} from '../../infrastructure/logger';
@@ -15,14 +15,20 @@ import {NavigationService} from './navigation.service';
         RouterModule,
         EventBusModule,
         StorageModule
-    ],
-    providers: [
-        AuthGuard,
-        LoginPageGuard,
-        NavigationService
     ]
 })
 export class NavigationModule {
     constructor(navigationService: NavigationService) {
+    }
+
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: NavigationModule,
+            providers: [
+                AuthGuard,
+                LoginPageGuard,
+                NavigationService
+            ]
+        };
     }
 }

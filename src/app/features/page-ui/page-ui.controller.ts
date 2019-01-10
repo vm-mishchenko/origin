@@ -1,14 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Radar, SpotModel, StartWorkingEvent, StopWorkingEvent, TowService, WorkInProgressEvent} from 'ngx-wall';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {ConnectableObservable} from 'rxjs/internal/observable/ConnectableObservable';
-import {filter, map, merge, publishReplay} from 'rxjs/operators';
+import {SpotModel} from 'ngx-wall';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {filter, map, merge} from 'rxjs/operators';
 import {EventBusService} from '../../application/event-bus';
 import {IPageDataModel} from '../page-service/domain/page-data-model';
-import {MoveBricksToPageEvent} from '../page-service/events/move-bricks-to-page.event';
-import {MovePageEvent} from '../page-service/events/move-page.event';
-import {PageInUrlSelectedEvent} from '../page-service/events/page-in-url-selected.event';
-import {SelectedBricksEvent} from '../page-service/events/selected-bricks.event';
 import {PageController} from '../page-service/page.controller';
 
 export interface IPageTreeDataItem extends IPageDataModel {
