@@ -9,7 +9,6 @@ import {LoginDataStreams} from './login-data-streams.class';
 import {LoginSandbox} from './login.sandbox';
 import {LoginComponent} from './ui/component/login/login.component';
 import {UserInfoComponent} from './ui/component/user-info/user-info.component';
-import {LoginPageControllerComponent} from './ui/page-controllers/login-page/login-page-controller.component';
 
 /**
  * @desc
@@ -31,8 +30,8 @@ import {LoginPageControllerComponent} from './ui/page-controllers/login-page/log
         NgbModule
     ],
     exports: [
-        UserInfoComponent,
-        LoginPageControllerComponent
+        LoginComponent,
+        UserInfoComponent
     ],
     providers: [
         LoginSandbox,
@@ -41,10 +40,7 @@ import {LoginPageControllerComponent} from './ui/page-controllers/login-page/log
     declarations: [
         // components
         LoginComponent,
-        UserInfoComponent,
-
-        // page controllers
-        LoginPageControllerComponent
+        UserInfoComponent
     ]
 })
 export class LoginModule {
