@@ -21,10 +21,10 @@ import {InquireModule} from '../../components/inquire';
 import {UtilsModule} from '../../infrastructure/utils';
 import {PageServiceModule} from '../page-service/page-service.module';
 import {PageBrickComponent} from './page-brick/page-brick.component';
-import {PageBreadcrumbComponent} from './ui/components/page-breadcrumb/page-breadcrumb.component';
-import {PageEditorComponent} from './ui/components/page-editor/page-editor.component';
-import {PageTreeItemComponent} from './ui/components/page-tree/page-tree-item.component';
-import {PageTreeComponent} from './ui/components/page-tree/page-tree.component';
+import {PageBreadcrumbComponent} from './ui/containers/page-breadcrumb/page-breadcrumb.component';
+import {PageEditorComponent} from './ui/containers/page-editor/page-editor.component';
+import {PageTreeItemComponent} from './ui/containers/page-tree/page-tree-item.component';
+import {PageTreeComponent} from './ui/containers/page-tree/page-tree.component';
 
 @NgModule({
     imports: [
