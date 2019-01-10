@@ -3,8 +3,8 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {EventBusService} from '../../../application/event-bus';
 import {Guid} from '../../../infrastructure/utils';
-import {IPageDataModel} from '../domain/page-data-model';
-import {PageSelectedEvent} from '../events/page-selected.event';
+import {IPageDataModel} from '../../page-service/domain/page-data-model';
+import {PageSelectedEvent} from '../../page-service/events/page-selected.event';
 import {PageUiController} from '../page-ui.controller';
 
 @Component({

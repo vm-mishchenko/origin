@@ -27,11 +27,11 @@ import {
 import {Subject, Subscription} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 import {EventBusService} from '../../../../../application/event-bus';
-import {IPageDataModel} from '../../../domain/page-data-model';
-import {AddPageEvent} from '../../../events/add-page.event';
-import {PageBrickDeletedEvent} from '../../../events/page-brick-deleted.event';
-import {SelectedBricksEvent} from '../../../events/selected-bricks.event';
-import {UpdatePageContentEvent} from '../../../events/update-page-content.event';
+import {IPageDataModel} from '../../../../page-service/domain/page-data-model';
+import {AddPageEvent} from '../../../../page-service/events/add-page.event';
+import {PageBrickDeletedEvent} from '../../../../page-service/events/page-brick-deleted.event';
+import {SelectedBricksEvent} from '../../../../page-service/events/selected-bricks.event';
+import {UpdatePageContentEvent} from '../../../../page-service/events/update-page-content.event';
 
 @Component({
     selector: 'o-page-editor',

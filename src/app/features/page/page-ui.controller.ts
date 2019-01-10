@@ -4,12 +4,12 @@ import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {ConnectableObservable} from 'rxjs/internal/observable/ConnectableObservable';
 import {filter, map, merge, publishReplay} from 'rxjs/operators';
 import {EventBusService} from '../../application/event-bus';
-import {IPageDataModel} from './domain/page-data-model';
-import {MoveBricksToPageEvent} from './events/move-bricks-to-page.event';
-import {MovePageEvent} from './events/move-page.event';
-import {PageInUrlSelectedEvent} from './events/page-in-url-selected.event';
-import {SelectedBricksEvent} from './events/selected-bricks.event';
-import {PageController} from './page.controller';
+import {IPageDataModel} from '../page-service/domain/page-data-model';
+import {MoveBricksToPageEvent} from '../page-service/events/move-bricks-to-page.event';
+import {MovePageEvent} from '../page-service/events/move-page.event';
+import {PageInUrlSelectedEvent} from '../page-service/events/page-in-url-selected.event';
+import {SelectedBricksEvent} from '../page-service/events/selected-bricks.event';
+import {PageController} from '../page-service/page.controller';
 
 export interface IPageTreeDataItem extends IPageDataModel {
     pageIds: string[];

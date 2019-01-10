@@ -5,12 +5,12 @@ import {ConnectableObservable} from 'rxjs/internal/observable/ConnectableObserva
 import {filter, map, publishReplay} from 'rxjs/operators';
 import {EventBusService} from '../../../../application/event-bus';
 import {NavigateToPageEvent} from '../../../../application/navigation';
-import {IPageDataModel} from '../../../../features/page/domain/page-data-model';
-import {MoveBricksToPageEvent} from '../../../../features/page/events/move-bricks-to-page.event';
-import {MovePageEvent} from '../../../../features/page/events/move-page.event';
-import {SelectedBricksEvent} from '../../../../features/page/events/selected-bricks.event';
+import {IPageDataModel} from '../../../../features/page-service/domain/page-data-model';
+import {MoveBricksToPageEvent} from '../../../../features/page-service/events/move-bricks-to-page.event';
+import {MovePageEvent} from '../../../../features/page-service/events/move-page.event';
+import {SelectedBricksEvent} from '../../../../features/page-service/events/selected-bricks.event';
 import {PageUiController} from '../../../../features/page/page-ui.controller';
-import {PageController} from '../../../../features/page/page.controller';
+import {PageController} from '../../../../features/page-service/page.controller';
 import {HomeController} from '../../../home/ui/page-controlles/home/home.controller';
 
 @Injectable()

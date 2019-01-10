@@ -4,10 +4,10 @@ import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {EventBusService} from '../../../../../application/event-bus';
 import {Inquire} from '../../../../../components/inquire';
-import {PageRepository} from '../../../domain/page.repository';
-import {DeletePageEvent} from '../../../events/delete-page.event';
-import {LoadPageEvent} from '../../../events/load-page.event';
-import {PageSelectedEvent} from '../../../events/page-selected.event';
+import {PageRepository} from '../../../../page-service/domain/page.repository';
+import {DeletePageEvent} from '../../../../page-service/events/delete-page.event';
+import {LoadPageEvent} from '../../../../page-service/events/load-page.event';
+import {PageSelectedEvent} from '../../../../page-service/events/page-selected.event';
 import {IPageTreeDataItem, PageUiController} from '../../../page-ui.controller';
 import {IPageTreeItem} from './page-tree.interfaces';
 

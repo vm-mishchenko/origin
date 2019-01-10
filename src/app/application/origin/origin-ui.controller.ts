@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {PageInUrlSelectedEvent} from '../../features/page/events/page-in-url-selected.event';
+import {PageInUrlSelectedEvent} from '../../features/page-service/events/page-in-url-selected.event';
 import {EventBusService} from '../event-bus';
 import {SwitchMenuEvent} from './events/switch-menu.event';
 
