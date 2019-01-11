@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {HomeController} from '../home/home.controller';
+import {HomeViewController} from '../home-view/home-view.controller';
 
 @Component({
     selector: 'o-welcome',
@@ -8,7 +8,7 @@ import {HomeController} from '../home/home.controller';
 })
 
 export class WelcomeComponent {
-    constructor(private homeController: HomeController) {
+    constructor(private homeController: HomeViewController) {
     }
 
     showMenu() {

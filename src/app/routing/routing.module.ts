@@ -8,7 +8,7 @@ const routes: Routes = [
     },
     {
         path: '',
-        loadChildren: '../views/home/home.module#HomeModule',
+        loadChildren: '../views/home/home-view.module#HomeViewModule',
     },
     {
         path: '',

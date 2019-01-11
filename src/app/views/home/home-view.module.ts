@@ -7,12 +7,12 @@ import {LoginUiModule} from '../../features/login-ui';
 import {PageUiModule} from '../../features/page-ui/page-ui.module';
 import {PageEditorViewComponent, PageViewModule} from '../page';
 import {WelcomeComponent} from './containers/welcome/welcome.component';
-import {HomeComponent} from './containers/home/home.component';
+import {HomeViewComponent} from './containers/home-view/home-view.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: HomeComponent,
+        component: HomeViewComponent,
         canActivate: [AuthGuard],
         canActivateChild: [AuthGuard],
         children: [
@@ -40,13 +40,13 @@ const routes: Routes = [
         RouterModule.forChild(routes),
     ],
     declarations: [
-        HomeComponent,
+        HomeViewComponent,
         WelcomeComponent
     ],
     exports: [
-        HomeComponent,
+        HomeViewComponent,
         WelcomeComponent
     ]
 })
-export class HomeModule {
+export class HomeViewModule {
 }

@@ -1,3 +1,3 @@
-export * from './home.module';
+export * from './home-view.module';
 export * from './containers/welcome/welcome.component';
-export * from './containers/home/home.component';
+export * from './containers/home-view/home-view.component';

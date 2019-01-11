@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {HomeController} from '../../../home/containers/home/home.controller';
+import {HomeViewController} from '../../../home/containers/home-view/home-view.controller';
 import {PageEditorViewController} from './page-editor-view.controller';
 
 @Component({
@@ -11,7 +11,7 @@ import {PageEditorViewController} from './page-editor-view.controller';
 export class PageEditorViewComponent implements OnInit {
     constructor(public pageEditorViewController: PageEditorViewController,
                 private route: ActivatedRoute,
-                private homeController: HomeController) {
+                private homeController: HomeViewController) {
     }
 
     ngOnInit() {

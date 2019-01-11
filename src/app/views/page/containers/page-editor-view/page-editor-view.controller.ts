@@ -11,7 +11,7 @@ import {MovePageEvent} from '../../../../features/page-service/events/move-page.
 import {SelectedBricksEvent} from '../../../../features/page-service/events/selected-bricks.event';
 import {PageController} from '../../../../features/page-service/page.controller';
 import {PageUiController} from '../../../../features/page-ui/page-ui.controller';
-import {HomeController} from '../../../home/containers/home/home.controller';
+import {HomeViewController} from '../../../home/containers/home-view/home-view.controller';
 
 @Injectable()
 export class PageEditorViewController {
@@ -22,7 +22,7 @@ export class PageEditorViewController {
 
     constructor(private eventBusService: EventBusService,
                 private pageController: PageController,
-                public homeController: HomeController,
+                public homeController: HomeViewController,
                 // todo: inject pageUiController only for pageDropZoneSpot$. WTF is that?
                 private pageUiController: PageUiController,
                 private radar: Radar,

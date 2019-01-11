@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable()
-export class HomeController {
+export class HomeViewController {
     isMenuOpen$: Observable<boolean> = new BehaviorSubject(false);
     selectedPageId$: Observable<string> = new BehaviorSubject(null);
 
