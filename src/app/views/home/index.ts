@@ -1,3 +1,3 @@
 export * from './home.module';
-export * from './ui/components/welcome/welcome.component';
-export * from './ui/page-controlles/home/home.component';
+export * from './containers/welcome/welcome.component';
+export * from './containers/home/home.component';

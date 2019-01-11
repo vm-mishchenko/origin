@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {HomeController} from '../../../home/ui/page-controlles/home/home.controller';
+import {HomeController} from '../../../home/containers/home/home.controller';
 import {PageEditorViewController} from './page-editor-view.controller';
 
 @Component({

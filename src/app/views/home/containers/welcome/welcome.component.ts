@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {HomeController} from '../../page-controlles/home/home.controller';
+import {HomeController} from '../home/home.controller';
 
 @Component({
     selector: 'o-welcome',

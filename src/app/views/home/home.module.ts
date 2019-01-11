@@ -6,8 +6,8 @@ import {AuthGuard, NavigationModule} from '../../application/navigation';
 import {LoginUiModule} from '../../features/login-ui';
 import {PageUiModule} from '../../features/page-ui/page-ui.module';
 import {PageEditorViewComponent, PageViewModule} from '../page';
-import {WelcomeComponent} from './ui/components/welcome/welcome.component';
-import {HomeComponent} from './ui/page-controlles/home/home.component';
+import {WelcomeComponent} from './containers/welcome/welcome.component';
+import {HomeComponent} from './containers/home/home.component';
 
 const routes: Routes = [
     {

@@ -1,7 +1,7 @@
 import {Component, HostBinding} from '@angular/core';
-import {EventBusService} from '../../../../../application/event-bus';
-import {NavigateToPageEvent} from '../../../../../application/navigation';
-import {AddPageEvent} from '../../../../../features/page-service';
+import {EventBusService} from '../../../../application/event-bus';
+import {NavigateToPageEvent} from '../../../../application/navigation';
+import {AddPageEvent} from '../../../../features/page-service';
 import {HomeController} from './home.controller';
 
 @Component({

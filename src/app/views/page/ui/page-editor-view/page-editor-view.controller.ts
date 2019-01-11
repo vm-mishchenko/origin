@@ -11,7 +11,7 @@ import {MovePageEvent} from '../../../../features/page-service/events/move-page.
 import {SelectedBricksEvent} from '../../../../features/page-service/events/selected-bricks.event';
 import {PageController} from '../../../../features/page-service/page.controller';
 import {PageUiController} from '../../../../features/page-ui/page-ui.controller';
-import {HomeController} from '../../../home/ui/page-controlles/home/home.controller';
+import {HomeController} from '../../../home/containers/home/home.controller';
 
 @Injectable()
 export class PageEditorViewController {
