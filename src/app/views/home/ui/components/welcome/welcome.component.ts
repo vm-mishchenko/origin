@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {EventBusService} from '../../../../../application/event-bus';
-import {SwitchMenuEvent} from '../../../../../application/origin';
+import {Component} from '@angular/core';
+import {HomeController} from '../../page-controlles/home/home.controller';
 
 @Component({
     selector: 'o-welcome',
@@ -8,14 +7,11 @@ import {SwitchMenuEvent} from '../../../../../application/origin';
     styleUrls: ['./welcome.component.scss']
 })
 
-export class WelcomeComponent implements OnInit {
-    constructor(private eventBusService: EventBusService) {
-    }
-
-    ngOnInit() {
+export class WelcomeComponent {
+    constructor(private homeController: HomeController) {
     }
 
     showMenu() {
-        this.eventBusService.dispatch(new SwitchMenuEvent());
+        this.homeController.switchMenu();
     }
 }

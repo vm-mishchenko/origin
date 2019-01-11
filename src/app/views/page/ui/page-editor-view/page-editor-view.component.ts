@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {EventBusService} from '../../../../application/event-bus';
-import {SwitchMenuEvent} from '../../../../application/origin/events/switch-menu.event';
+import {HomeController} from '../../../home/ui/page-controlles/home/home.controller';
 import {PageEditorViewController} from './page-editor-view.controller';
 
 @Component({
@@ -12,16 +11,17 @@ import {PageEditorViewController} from './page-editor-view.controller';
 export class PageEditorViewComponent implements OnInit {
     constructor(public pageEditorViewController: PageEditorViewController,
                 private route: ActivatedRoute,
-                private eventBusService: EventBusService) {
+                private homeController: HomeController) {
     }
 
     ngOnInit() {
         this.route.params.subscribe((params: { id: string }) => {
             this.pageEditorViewController.onSelectedPageId(params.id);
+            this.homeController.closeMenu();
         });
     }
 
     showMenu() {
-        this.eventBusService.dispatch(new SwitchMenuEvent());
+        this.homeController.switchMenu();
     }
 }

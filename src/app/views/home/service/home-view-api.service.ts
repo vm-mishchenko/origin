@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable()
-export class HomeController {
+export class HomeViewApiService {
     isMenuOpen$: Observable<boolean> = new BehaviorSubject(false);
     selectedPageId$: Observable<string> = new BehaviorSubject(null);
 
@@ -10,12 +10,6 @@ export class HomeController {
         const currentValue = (this.isMenuOpen$ as BehaviorSubject<boolean>).value;
 
         (this.isMenuOpen$ as BehaviorSubject<boolean>).next(!currentValue);
-    }
-
-    closeMenu() {
-        if ((this.isMenuOpen$ as BehaviorSubject<boolean>).value) {
-            this.switchMenu();
-        }
     }
 
     onSelectedPageId(pageId: string) {

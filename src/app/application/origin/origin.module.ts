@@ -4,25 +4,18 @@ import {filter} from 'rxjs/operators';
 import {IUserData, LOGIN_GUEST_UID, LoginDataStreams, LoginServiceModule} from '../../features/login-service';
 import {ILogger, LoggerFactoryService} from '../../infrastructure/logger';
 import {StorageService} from '../../infrastructure/storage';
-import {OriginUiController} from './origin-ui.controller';
 
 @NgModule({
     imports: [
         LoginServiceModule,
         FileUploaderModule
     ],
-    exports: [],
-    declarations: [],
-    providers: [
-        OriginUiController
-    ]
 })
 export class OriginModule {
     private logger: ILogger = this.loggerFactoryService.create('Navigation');
 
     constructor(private loginDataStreams: LoginDataStreams,
                 private fileUploaderService: FileUploaderService,
-                private originUiController: OriginUiController,
                 private loggerFactoryService: LoggerFactoryService,
                 private storageService: StorageService) {
         this.loginDataStreams.user$.pipe(
