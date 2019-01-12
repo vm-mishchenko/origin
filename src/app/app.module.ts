@@ -29,9 +29,11 @@ import {RoutingModule} from './routing';
         // Application
         OriginModule,
         RoutingModule,
-        OverlayModule,
 
         // infrastructure
+
+        // todo-hack: https://github.com/angular/material2/issues/10820
+        OverlayModule,
         FirebaseFileUploaderModule,
 
         // features

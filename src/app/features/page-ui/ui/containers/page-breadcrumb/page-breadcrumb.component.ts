@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {IPageTreeDataItem, PageUiController} from '../../../page-ui.controller';
+import {IPageTreeDataItem, PageUiController} from '../../../../page-service/page-ui.controller';
 
 @Component({
     selector: 'o-page-breadcrumb',

@@ -5,12 +5,14 @@
 
     <div (click)="onPageSelected()" class="w-selection-list__item">
         <div class="content">
-            <button (click)="switchChildVisibility($event)" *ngIf="pageTreeItem.isOpen" class="btn btn-link btn-sm w-btn arrow"
+            <button (click)="switchChildVisibility($event)" *ngIf="pageTreeItem.isOpen"
+                    class="btn btn-link btn-sm w-btn arrow"
                     type="button">
                 <span class="oi oi-caret-bottom w-icon"></span>
             </button>
 
-            <button (click)="switchChildVisibility($event)" *ngIf="!pageTreeItem.isOpen" class="btn btn-link btn-sm w-btn arrow"
+            <button (click)="switchChildVisibility($event)" *ngIf="!pageTreeItem.isOpen"
+                    class="btn btn-link btn-sm w-btn arrow"
                     type="button">
                 <span class="oi oi-caret-right w-icon"></span>
             </button>

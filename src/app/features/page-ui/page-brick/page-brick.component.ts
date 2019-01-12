@@ -5,7 +5,7 @@ import {EventBusService} from '../../../application/event-bus';
 import {Guid} from '../../../infrastructure/utils';
 import {IPageDataModel} from '../../page-service/domain/page-data-model';
 import {PageSelectedEvent} from '../../page-service/events/page-selected.event';
-import {PageUiController} from '../page-ui.controller';
+import {PageUiController} from '../../page-service/page-ui.controller';
 
 @Component({
     selector: 'page-brick',

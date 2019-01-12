@@ -8,7 +8,7 @@ import {PageRepository} from '../../../../page-service/domain/page.repository';
 import {DeletePageEvent} from '../../../../page-service/events/delete-page.event';
 import {LoadPageEvent} from '../../../../page-service/events/load-page.event';
 import {PageSelectedEvent} from '../../../../page-service/events/page-selected.event';
-import {IPageTreeDataItem, PageUiController} from '../../../page-ui.controller';
+import {IPageTreeDataItem, PageUiController} from '../../../../page-service/page-ui.controller';
 import {IPageTreeItem} from './page-tree.interfaces';
 
 @Component({

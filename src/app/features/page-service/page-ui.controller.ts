@@ -3,8 +3,8 @@ import {SpotModel} from 'ngx-wall';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {filter, map, merge} from 'rxjs/operators';
 import {EventBusService} from '../../application/event-bus';
-import {IPageDataModel} from '../page-service/domain/page-data-model';
-import {PageController} from '../page-service/page.controller';
+import {IPageDataModel} from './domain/page-data-model';
+import {PageController} from './page.controller';
 
 export interface IPageTreeDataItem extends IPageDataModel {
     pageIds: string[];

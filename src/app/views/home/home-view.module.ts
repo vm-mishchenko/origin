@@ -6,8 +6,8 @@ import {AuthGuard, NavigationModule} from '../../application/navigation';
 import {LoginUiModule} from '../../features/login-ui';
 import {PageUiModule} from '../../features/page-ui/page-ui.module';
 import {PageEditorViewComponent, PageViewModule} from '../page';
-import {WelcomeComponent} from './containers/welcome/welcome.component';
 import {HomeViewComponent} from './containers/home-view/home-view.component';
+import {WelcomeComponent} from './containers/welcome/welcome.component';
 
 const routes: Routes = [
     {
@@ -37,7 +37,7 @@ const routes: Routes = [
         NavigationModule,
         LoginUiModule,
         EventBusModule,
-        RouterModule.forChild(routes),
+        RouterModule.forChild(routes)
     ],
     declarations: [
         HomeViewComponent,
